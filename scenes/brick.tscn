@@ -3,7 +3,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jurt7"]
 size = Vector2(3, 1)
 
-[node name="Brick" type="RigidBody2D"]
+[node name="Brick" type="AnimatableBody2D"]
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(1, 0.474333, 0.17, 1)
