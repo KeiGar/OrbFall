@@ -1,6 +1,6 @@
 extends Area2D
 
-const SPEED = 250
+const SPEED = 600
 var direction
 @onready var boundary_left: ShapeCast2D = $"../BoundaryLeft"
 @onready var boundary_right: ShapeCast2D = $"../BoundaryRight"
@@ -25,4 +25,9 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	direction = Vector2(direction.x, 1).normalized()
+	var dir = 0
+	if area.position.y >= position.y:
+		dir = -1
+	else:
+		dir = 1
+	direction = Vector2(direction.x, dir)
