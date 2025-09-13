@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://1lrrhxhkevl3" path="res://scripts/brick.gd" id="1_5l4w1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jurt7"]
-size = Vector2(16, 16)
+size = Vector2(15, 15)
 
 [node name="Brick" type="Area2D"]
 script = ExtResource("1_5l4w1")
@@ -15,4 +15,4 @@ polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jurt7")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

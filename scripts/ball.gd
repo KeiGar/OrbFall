@@ -2,10 +2,8 @@ extends Area2D
 
 const SPEED = 250
 var direction
-
-@onready var ray_top_left: RayCast2D = $RayTopLeft
-@onready var ray_bottom_left: RayCast2D = $RayBottomLeft
-
+@onready var boundary_left: ShapeCast2D = $"../BoundaryLeft"
+@onready var boundary_right: ShapeCast2D = $"../BoundaryRight"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,13 +14,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var dir
-	if ray_bottom_left.is_colliding():
-		dir = -1
-		direction = Vector2(randf_range(-1,1), dir).normalized()
-	if ray_top_left.is_colliding():
-		dir = 1
-		direction = Vector2(randf_range(-1,1), dir).normalized()
-		
 	position = position + (direction * SPEED * delta)
-		
+	if boundary_left.is_colliding():
+		direction = Vector2(1, direction.y)
+	if boundary_right.is_colliding():
+		direction = Vector2(-1, direction.y)
+
+func _on_body_entered(body: Node2D) -> void:
+	direction = Vector2(direction.x, -1).normalized()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	direction = Vector2(direction.x, 1).normalized()
