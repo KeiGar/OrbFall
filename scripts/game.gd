@@ -1,9 +1,20 @@
 extends Node2D
+@onready var level_scenes: Node2D = $LevelScenes
+@onready var game_timer: Node2D = $GameTimer
 
-# Called when the node enters the scene tree for the first time.
+signal game_start
+
 func _ready() -> void:
-	pass
+	game_start.emit()
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_game_timer_pause() -> void:
+	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func _on_game_timer_unpause() -> void:
+	level_scenes.process_mode = Node.PROCESS_MODE_ALWAYS
+	game_timer.queue_free()
