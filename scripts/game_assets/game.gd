@@ -42,7 +42,7 @@ func _on_game_start_timer_timeout() -> void:
 	game_timer.queue_free()
 
 func _on_pause_menu_btn_quit_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu_controls.tscn")
+	get_tree().change_scene_to_file("res://scenes/menus/main_menu_controls.tscn")
 	
 func _on_pause_menu_btn_continue_pressed() -> void:
 	unpauseGame()
