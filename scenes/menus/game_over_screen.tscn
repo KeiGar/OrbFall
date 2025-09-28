@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd0hrtf2laq6a"]
+
+[ext_resource type="Script" uid="uid://pi3ngqwfc1dh" path="res://scripts/menus/game_over_screen.gd" id="1_agkj2"]
+
+[sub_resource type="FontVariation" id="FontVariation_p57ef"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]
+font = SubResource("FontVariation_p57ef")
+font_size = 80
+font_color = Color(1, 0.089999974, 0.089999974, 1)
+
+[node name="GameOverScreen" type="BoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -313.5
+offset_top = -55.0
+offset_right = 313.5
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+vertical = true
+script = ExtResource("1_agkj2")
+
+[node name="GameOverLabel" type="Label" parent="."]
+layout_mode = 2
+text = "GAME OVER!"
+label_settings = SubResource("LabelSettings_u5sy4")
+horizontal_alignment = 1
+
+[node name="Btn_Restart" type="Button" parent="."]
+layout_mode = 2
+text = "Restart"
+
+[node name="Btn_Quit" type="Button" parent="."]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="Btn_Restart" to="." method="_on_btn_restart_pressed"]
+[connection signal="pressed" from="Btn_Quit" to="." method="_on_btn_quit_pressed"]
