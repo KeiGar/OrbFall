@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://dymimjcrkx72l"]
+
+[ext_resource type="Script" uid="uid://d4b10t5ymxudx" path="res://scripts/menus/highscore_menu.gd" id="1_3pnpd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3pnpd"]
+font_size = 36
+
+[node name="HighscoreMenu" type="BoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.5
+offset_top = -72.0
+offset_right = 102.5
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+vertical = true
+script = ExtResource("1_3pnpd")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Highscore"
+label_settings = SubResource("LabelSettings_3pnpd")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_stretch_ratio = 1.05
+columns = 3
+
+[node name="Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "1."
+
+[node name="Label2" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Testerman"
+
+[node name="Label3" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "500pt"
+
+[node name="Btn_Return" type="Button" parent="."]
+layout_mode = 2
+text = "Return"
+
+[connection signal="pressed" from="Btn_Return" to="." method="_on_btn_return_pressed"]
