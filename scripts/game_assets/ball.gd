@@ -1,28 +1,37 @@
 extends CharacterBody2D
 
-@export var SPEED = 600
-var direction
+@export var speed = 600.0
+const MAX_BOUNCES_PER_FRAME := 4
+const REMAINDER_EPS := 0.001
 
-# Called when the node enters the scene tree for the first time.
+var dir: Vector2 = Vector2(0.25, -1).normalized()
+var rng:= RandomNumberGenerator.new()
+
 func _ready() -> void:
-	var randX = randf_range(-1,1)
-	var randY = randf_range(-1,1)
-	direction = Vector2(randX,randY).normalized()
+	rng.seed = Time.get_ticks_usec()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	position = position + (direction * SPEED * delta)
-
-func _on_body_entered(body: Node2D) -> void:
-	direction = Vector2(direction.x, -1).normalized()
-
-func _on_area_entered(area: Area2D) -> void:
-	var dir = area.position - position
-	print(dir)
-	#var ydir = 0
-	#var xDir = randf_range(-1,1)
-	#if area.position.y >= position.y:
-		#ydir = randf_range(-1,-.5)
-	#else:
-		#ydir = randf_range(.5,1)
-	direction = -direction.normalized()
+# Called every frame. 'dt' is the elapsed time since the previous frame.
+func _physics_process(dt: float) -> void:
+	velocity = dir * speed
+	var remainder := velocity * dt
+	
+	# Process multiple impacts in one frame, up to the max impact limit
+	var bounces := 0
+	while bounces < MAX_BOUNCES_PER_FRAME and remainder.length() > REMAINDER_EPS:
+		var hit := move_and_collide(remainder, true, true, true)
+		if hit:
+			var travel := hit.get_travel()
+			if travel.length() > 0.0:
+				move_and_collide(travel, false, true, true)
+			var collider_obj := hit.get_collider()
+			var collider: Node = collider_obj if collider_obj is Node else null
+			var n := hit.get_normal()
+			var p := hit.get_position()
+			var rem := hit.get_remainder()
+			
+			velocity = dir * speed
+			remainder = rem
+			bounces += 1
+		else:
+			move_and_collide(remainder, false, true, true)
+			remainder = Vector2.ZERO
