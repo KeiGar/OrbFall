@@ -46,6 +46,8 @@ vertical_alignment = 1
 script = SubResource("GDScript_lbhrr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -10)
+zoom = Vector2(0.95, 0.95)
 
 [node name="LevelScenes" parent="." instance=ExtResource("3_dqskq")]
 
