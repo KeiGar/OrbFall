@@ -1,6 +1,6 @@
 extends Area2D
 
-const SPEED = 600
+@export var SPEED = 600
 var direction
 @onready var boundary_left: ShapeCast2D = $"../BoundaryLeft"
 @onready var boundary_right: ShapeCast2D = $"../BoundaryRight"
