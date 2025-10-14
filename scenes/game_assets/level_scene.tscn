@@ -28,7 +28,6 @@ tile_set = SubResource("TileSet_lnu2h")
 
 [node name="Killzone" parent="." instance=ExtResource("4_qi1tt")]
 position = Vector2(0, 330)
-script = null
 
 [node name="Boundary_Left" parent="." instance=ExtResource("6_ucui5")]
 position = Vector2(-591, 0)
@@ -45,4 +44,6 @@ rotation = 1.5707964
 position = Vector2(593, 1)
 rotation = 3.1415927
 
+[connection signal="ball_collision" from="Ball" to="." method="_on_ball_ball_collision"]
 [connection signal="area_entered" from="Killzone" to="." method="_on_killzone_area_entered"]
+[connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]

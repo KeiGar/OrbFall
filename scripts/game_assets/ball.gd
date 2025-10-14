@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 @export var speed = 600.0
-const MAX_BOUNCES_PER_FRAME := 4
+signal ball_collision(collider: Node)
+const MAX_BOUNCES_PER_FRAME := 3
 const REMAINDER_EPS := 0.001
 
 var dir: Vector2 = Vector2(0.25, -1).normalized()
@@ -27,11 +28,12 @@ func _physics_process(dt: float) -> void:
 			var collider: Node = collider_obj if collider_obj is Node else null
 			var n := hit.get_normal()
 			var p := hit.get_position()
+			dir = dir.bounce(n).normalized()
 			var rem := hit.get_remainder()
-			
 			velocity = dir * speed
 			remainder = rem
 			bounces += 1
+			ball_collision.emit(collider)
 		else:
 			move_and_collide(remainder, false, true, true)
 			remainder = Vector2.ZERO
