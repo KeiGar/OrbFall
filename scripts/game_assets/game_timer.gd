@@ -1,6 +1,6 @@
 extends Node2D
 @onready var game_start_timer: Timer = $Game_Start_Timer
-@onready var timer_display: Label = $Game_Start_Timer/TimerDisplay
+@onready var timer_display: Label = $Game_Start_Timer/BoxContainer/TimerDisplay
 
 const GAME_START_COUNTDOWN := 4
 
