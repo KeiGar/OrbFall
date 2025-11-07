@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dufbq4v7r4g07" path="res://scripts/game_assets/player.gd" id="1_3vyb7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdu5b"]
 size = Vector2(200, 50)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
@@ -14,4 +14,4 @@ color = Color(0.15, 0.773333, 1, 1)
 polygon = PackedVector2Array(-100, -25, 100, -25, 100, 25, -100, 25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_u8vuu")
+shape = SubResource("RectangleShape2D_hdu5b")

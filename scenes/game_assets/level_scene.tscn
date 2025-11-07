@@ -19,6 +19,8 @@ script = ExtResource("1_ro0ch")
 
 [node name="Player" parent="." instance=ExtResource("1_u48xk")]
 position = Vector2(0, 402)
+paddle_width = 220.0
+paddle_height = 30.0
 
 [node name="Ball" parent="." instance=ExtResource("2_ro0ch")]
 position = Vector2(0, 1)

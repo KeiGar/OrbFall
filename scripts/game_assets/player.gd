@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @onready var paddle_shape: Polygon2D = $PaddleShape
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 @export var paddle_width: float = 200
 @export var paddle_height: float = 50
@@ -14,6 +15,8 @@ func _ready() -> void:
 		paddle_shape.polygon[1] = Vector2(hw, -hh)
 		paddle_shape.polygon[2] = Vector2(hw, hh)
 		paddle_shape.polygon[3] = Vector2(-hw, hh)
+	collision_shape.shape.size.x = paddle_width
+	collision_shape.shape.size.y = paddle_height
 
 func _physics_process(delta: float) -> void:
 	var dir = 0
