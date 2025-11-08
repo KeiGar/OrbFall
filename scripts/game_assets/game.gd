@@ -2,6 +2,7 @@ extends Node2D
 @onready var level_scenes: Node2D = $LevelScenes
 @onready var game_timer: Node2D = $GameTimer
 @onready var game_over_screen: BoxContainer = $Menus/GameOverScreen
+@onready var score_label: Label = $ScoreLabel
 
 signal game_start
 signal pause
@@ -10,6 +11,7 @@ signal unpause
 var isGamePaused = false
 var gameEnded = false
 var startGameTimerRunning = false
+var player_score := 0
 
 func _ready() -> void:
 	game_over_screen.visible = false
@@ -64,3 +66,8 @@ func _on_level_scenes_game_over() -> void:
 	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
 	game_over_screen.visible = true
 	gameEnded = true
+
+
+func _on_level_scenes_increment_points(incr: int) -> void:
+	player_score += incr
+	score_label.text = "%d" % player_score
