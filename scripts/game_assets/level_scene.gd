@@ -1,4 +1,5 @@
 extends Node2D
+@onready var brick_tiles: TileMapLayer = $BrickTiles
 signal game_over
 signal increment_points(incr: int)
 

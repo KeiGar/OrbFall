@@ -24,7 +24,17 @@ func displayHighscoreData() -> void:
 		highscore_table.add_child(lbl_score)
 		rank += 1
 
+func clearHighscoreTable() -> void:
+	for n in highscore_table.get_children():
+		highscore_table.remove_child(n)
+		n.queue_free()
+
 func _on_btn_return_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu_controls.tscn")
 	
+func _on_btn_delete_pressed() -> void:
+	fileHandler.deleteAllData()
+	Highscores = fileHandler.Highscores
+	clearHighscoreTable()
+	displayHighscoreData()
 	
