@@ -80,5 +80,6 @@ visible = false
 [connection signal="increment_points" from="LevelScenes" to="." method="_on_level_scenes_increment_points"]
 [connection signal="btn_quit_pressed" from="Menus/GameOverScreen" to="." method="_on_game_over_screen_btn_quit_pressed"]
 [connection signal="btn_restart_pressed" from="Menus/GameOverScreen" to="." method="_on_game_over_screen_btn_restart_pressed"]
+[connection signal="btn_viewHighscore_pressed" from="Menus/GameOverScreen" to="." method="_on_game_over_screen_btn_view_highscore_pressed"]
 [connection signal="btn_continue_pressed" from="Menus/PauseMenu" to="." method="_on_pause_menu_btn_continue_pressed"]
 [connection signal="btn_quit_pressed" from="Menus/PauseMenu" to="." method="_on_pause_menu_btn_quit_pressed"]

@@ -58,6 +58,7 @@ func _on_pause_menu_btn_continue_pressed() -> void:
 
 func _on_game_over_screen_btn_quit_pressed() -> void:
 	quitGame()
+	
 
 func _on_game_over_screen_btn_restart_pressed() -> void:
 	get_tree().reload_current_scene()
@@ -67,7 +68,10 @@ func _on_level_scenes_game_over() -> void:
 	game_over_screen.visible = true
 	gameEnded = true
 
-
 func _on_level_scenes_increment_points(incr: int) -> void:
 	player_score += incr
 	score_label.text = "%d" % player_score
+
+func _on_game_over_screen_btn_view_highscore_pressed() -> void:
+	PlayerVariables.player_score = player_score
+	get_tree().change_scene_to_file("res://scenes/menus/highscore_saving_screen.tscn")
