@@ -10,7 +10,8 @@ func _ready() -> void:
 	player_name = PlayerVariables.player_name
 	player_score = PlayerVariables.player_score
 	player_name_text_field.text = player_name
-	save_button.disabled = true
+	if player_name == "":
+		save_button.disabled = true
 	lbl_score.text = "%d" % player_score
 	
 func _on_save_button_pressed() -> void:
