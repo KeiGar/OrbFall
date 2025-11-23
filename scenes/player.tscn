@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dufbq4v7r4g07" path="res://scripts/player.gd" id="1_3vyb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
-size = Vector2(300, 50)
+size = Vector2(300, 15)
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -14,5 +14,5 @@ color = Color(0.15, 0.773333, 1, 1)
 polygon = PackedVector2Array(0, 0, 0, 50, 300, 50, 300, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(150, 25)
+position = Vector2(150, 7.5)
 shape = SubResource("RectangleShape2D_u8vuu")
