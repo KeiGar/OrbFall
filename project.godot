@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Hello World Game"
+config/name="BreakoutClone"
 run/main_scene="uid://b3ceglkuwrcgy"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
