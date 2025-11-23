@@ -28,22 +28,10 @@ text = "Highscore"
 label_settings = SubResource("LabelSettings_3pnpd")
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="HighscoreTable" type="GridContainer" parent="."]
 layout_mode = 2
 size_flags_stretch_ratio = 1.05
 columns = 3
-
-[node name="Label" type="Label" parent="GridContainer"]
-layout_mode = 2
-text = "1."
-
-[node name="Label2" type="Label" parent="GridContainer"]
-layout_mode = 2
-text = "Testerman"
-
-[node name="Label3" type="Label" parent="GridContainer"]
-layout_mode = 2
-text = "500pt"
 
 [node name="Btn_Return" type="Button" parent="."]
 layout_mode = 2
