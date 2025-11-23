@@ -15,4 +15,7 @@ position = Vector2(-4.68981, -4.68981)
 scale = Vector2(9.86149, 9.86149)
 polygon = PackedVector2Array(-0.84269, -0.84269, 1.79383, -0.84269, 1.79383, 1.79383, -0.84269, 1.79383)
 
+[node name="SpeedUpTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="ball_collision" from="." to="." method="_on_ball_collision"]

@@ -1,18 +1,24 @@
 extends CharacterBody2D
 
-@export var speed = 600.0
+@export var max_speed: float = 700.0
+@export var time_to_max_speed: float = 120.0
+@onready var speed_up_timer: Timer = $SpeedUpTimer
 
 signal ball_collision(collider: Node)
 const MAX_BOUNCES_PER_FRAME := 1
 const REMAINDER_EPS := 0.001
 var dir: Vector2 = Vector2(0.25, -1).normalized()
 var rng:= RandomNumberGenerator.new()
+var speed: float = max_speed
 
 func _ready() -> void:
 	rng.seed = Time.get_ticks_usec()
+	speed_up_timer.wait_time = time_to_max_speed
+	speed_up_timer.start()
 
 # Called every frame. 'dt' is the elapsed time since the previous frame.
 func _physics_process(dt: float) -> void:
+	speed = max_speed * ((time_to_max_speed - speed_up_timer.time_left) / time_to_max_speed) + 300.0
 	velocity = dir * speed
 	var remainder := velocity * dt
 	
@@ -60,6 +66,5 @@ func collideWithPlayer(hit: KinematicCollision2D) -> Vector2:
 	var bounce_angle = offset * max_angle
 	
 	dir = Vector2(sin(bounce_angle), -cos(bounce_angle)).normalized()
-	
 	var rem := hit.get_remainder()
 	return rem
