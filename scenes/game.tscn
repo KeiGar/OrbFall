@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dld6rt8cylm2"]
+[gd_scene load_steps=5 format=3 uid="uid://dld6rt8cylm2"]
 
+[ext_resource type="Script" uid="uid://d1b7odoxshqad" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bgbrr5h7c8mmi" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://vo133m8mdrx4" path="res://scenes/ball.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://nvmo8vp6gxdv" path="res://scenes/stack.tscn" id="3_lnu2h"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_lbhrr")
+stack_scene = ExtResource("3_lnu2h")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
