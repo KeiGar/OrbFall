@@ -49,6 +49,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
 placeholder_text = "Enter your name!"
+tab_input_mode = false
 
 [node name="SaveButton" type="Button" parent="."]
 custom_minimum_size = Vector2(200, 50)

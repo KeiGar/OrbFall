@@ -26,3 +26,7 @@ func _on_player_name_text_field_text_changed() -> void:
 		save_button.disabled = false
 	else:
 		save_button.disabled = true
+
+func _input(event: InputEvent) -> void:
+	if Input.is_key_pressed(KEY_ENTER):
+		get_viewport().set_input_as_handled()
