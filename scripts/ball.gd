@@ -9,25 +9,24 @@ var direction
 func _ready() -> void:
 	var randX = randf_range(-1,1)
 	var randY = randf_range(-1,1)
-	direction = Vector2(randX,randY)
-	direction = direction.normalized()
+	direction = Vector2(randX,randY).normalized()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	position = position + (direction * SPEED * delta)
 	if boundary_left.is_colliding():
-		direction = Vector2(1, direction.y)
+		direction = Vector2(1, direction.y).normalized()
 	if boundary_right.is_colliding():
-		direction = Vector2(-1, direction.y)
+		direction = Vector2(-1, direction.y).normalized()
 
 func _on_body_entered(body: Node2D) -> void:
 	direction = Vector2(direction.x, -1).normalized()
 
-
 func _on_area_entered(area: Area2D) -> void:
-	var dir = 0
+	var ydir = 0
+	var xDir = randf_range(-1,1)
 	if area.position.y >= position.y:
-		dir = -1
+		ydir = randf_range(-1,-.5)
 	else:
-		dir = 1
-	direction = Vector2(direction.x, dir)
+		ydir = randf_range(.5,1)
+	direction = Vector2(xDir, ydir).normalized()
