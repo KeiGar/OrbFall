@@ -7,9 +7,21 @@ script = ExtResource("1_7s4qf")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.873298, 0.873298, 0.873298, 1)
-polygon = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
+polygon = PackedVector2Array(-13, -13, 13, -13, 13, 13, -13, 13)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
+position = Vector2(-4.68981, -4.68981)
+scale = Vector2(9.86149, 9.86149)
+polygon = PackedVector2Array(-0.84269, -0.84269, 1.79383, -0.84269, 1.79383, 1.79383, -0.84269, 1.79383)
+
+[node name="RayTopLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -13)
+target_position = Vector2(0, -10)
+collide_with_areas = true
+
+[node name="RayBottomLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 13)
+target_position = Vector2(0, 9)
+collide_with_areas = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
