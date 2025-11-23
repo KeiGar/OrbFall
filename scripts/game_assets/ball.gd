@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
 @export var speed = 600.0
-signal ball_collision(collider: Node)
-const MAX_BOUNCES_PER_FRAME := 3
-const REMAINDER_EPS := 0.001
 
+signal ball_collision(collider: Node)
+const MAX_BOUNCES_PER_FRAME := 1
+const REMAINDER_EPS := 0.001
 var dir: Vector2 = Vector2(0.25, -1).normalized()
 var rng:= RandomNumberGenerator.new()
 
@@ -26,16 +26,12 @@ func _physics_process(dt: float) -> void:
 				move_and_collide(travel, false, true, true)
 			var collider_obj := hit.get_collider()
 			var collider: Node = collider_obj if collider_obj is Node else null
-			var n := hit.get_normal()
-			var p := hit.get_position()
-			dir = dir.bounce(n).normalized()
-			dir.x = copysign(randf_range(0.1,1), dir.x)
-			dir = dir.normalized()
-			var rem := hit.get_remainder()
-			velocity = dir * speed
-			remainder = rem
-			bounces += 1
+			if collider.is_in_group("player"):
+				collideWithPlayer(hit)
+			else:
+				remainder = collideWithBody(hit)
 			ball_collision.emit(collider)
+			bounces += 1
 		else:
 			move_and_collide(remainder, false, true, true)
 			remainder = Vector2.ZERO
@@ -45,3 +41,20 @@ func copysign(a: float, b: float) -> float:
 		return a
 	else:
 		return -a
+		
+func collideWithBody(hit: KinematicCollision2D) -> Vector2:
+	var n := hit.get_normal()
+	var p := hit.get_position()
+	dir = dir.bounce(n).normalized()
+	var rem := hit.get_remainder()
+	velocity = dir * speed
+	return rem
+	
+func collideWithPlayer(hit: KinematicCollision2D) -> Vector2:
+	var collider = hit.get_collider()
+	var player: Node2D = collider if collider is Node2D else null
+	var hit_pos = position.x
+	var player_center = player.position.x
+	
+	var rem := hit.get_remainder()
+	return rem
