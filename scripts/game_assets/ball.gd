@@ -27,7 +27,7 @@ func _physics_process(dt: float) -> void:
 			var collider_obj := hit.get_collider()
 			var collider: Node = collider_obj if collider_obj is Node else null
 			if collider.is_in_group("player"):
-				collideWithPlayer(hit)
+				remainder = collideWithPlayer(hit)
 			else:
 				remainder = collideWithBody(hit)
 			ball_collision.emit(collider)
@@ -44,7 +44,6 @@ func copysign(a: float, b: float) -> float:
 		
 func collideWithBody(hit: KinematicCollision2D) -> Vector2:
 	var n := hit.get_normal()
-	var p := hit.get_position()
 	dir = dir.bounce(n).normalized()
 	var rem := hit.get_remainder()
 	velocity = dir * speed
@@ -55,6 +54,12 @@ func collideWithPlayer(hit: KinematicCollision2D) -> Vector2:
 	var player: Node2D = collider if collider is Node2D else null
 	var hit_pos = position.x
 	var player_center = player.position.x
+	var half_w = player.paddle_width / 2
+	var offset = (hit_pos - player_center) / half_w
+	var max_angle = deg_to_rad(60)
+	var bounce_angle = offset * max_angle
+	
+	dir = Vector2(sin(bounce_angle), -cos(bounce_angle)).normalized()
 	
 	var rem := hit.get_remainder()
 	return rem
