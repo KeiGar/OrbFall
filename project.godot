@@ -13,7 +13,6 @@ config_version=5
 config/name="Hello World Game"
 run/main_scene="uid://dld6rt8cylm2"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
 
 [input]
 
