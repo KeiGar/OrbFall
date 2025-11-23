@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0d0gi2rp30cl" path="res://scripts/game_assets/ball.gd" id="1_7s4qf"]
 
-[node name="Ball" type="Area2D"]
+[node name="Ball" type="CharacterBody2D"]
 script = ExtResource("1_7s4qf")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
@@ -13,6 +13,3 @@ polygon = PackedVector2Array(-13, -13, 13, -13, 13, 13, -13, 13)
 position = Vector2(-4.68981, -4.68981)
 scale = Vector2(9.86149, 9.86149)
 polygon = PackedVector2Array(-0.84269, -0.84269, 1.79383, -0.84269, 1.79383, 1.79383, -0.84269, 1.79383)
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

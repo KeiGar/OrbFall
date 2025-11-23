@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://i3lng1wuogm1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7kmo0"]
+normal = Vector2(1, 0)
+distance = 30.0
+
+[node name="Boundary" type="Area2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.678944, 0.67894363, 0.6789436, 1)
+polygon = PackedVector2Array(-30, 350, -30, -350, 30, -350, 30, 350)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_7kmo0")
