@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dld6rt8cylm2"]
+[gd_scene load_steps=10 format=3 uid="uid://dld6rt8cylm2"]
 
 [ext_resource type="Script" uid="uid://d1b7odoxshqad" path="res://scripts/game_assets/game.gd" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://ccm70s242m0kt" path="res://scripts/game_assets/game_timer.gd" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://bfexw7mgg1cck" path="res://scenes/game_assets/level_scene.tscn" id="3_dqskq"]
 [ext_resource type="PackedScene" uid="uid://cd0hrtf2laq6a" path="res://scenes/menus/game_over_screen.tscn" id="7_po76p"]
 [ext_resource type="PackedScene" uid="uid://epwevbbl7hwq" path="res://scenes/menus/pause_menu.tscn" id="7_u5sy4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dqskq"]
+font_size = 100
 
 [sub_resource type="SystemFont" id="SystemFont_iywne"]
 subpixel_positioning = 0
@@ -20,6 +23,15 @@ script/source = "extends Label
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = -544.0
+offset_top = -465.0
+offset_bottom = -226.0
+text = "0"
+label_settings = SubResource("LabelSettings_dqskq")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GameTimer" type="Node2D" parent="."]
 script = ExtResource("2_iywne")
@@ -65,6 +77,7 @@ visible = false
 [connection signal="timeout" from="GameTimer/Game_Start_Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="GameTimer/Game_Start_Timer" to="GameTimer" method="_on_game_start_timer_timeout"]
 [connection signal="game_over" from="LevelScenes" to="." method="_on_level_scenes_game_over"]
+[connection signal="increment_points" from="LevelScenes" to="." method="_on_level_scenes_increment_points"]
 [connection signal="btn_quit_pressed" from="Menus/GameOverScreen" to="." method="_on_game_over_screen_btn_quit_pressed"]
 [connection signal="btn_restart_pressed" from="Menus/GameOverScreen" to="." method="_on_game_over_screen_btn_restart_pressed"]
 [connection signal="btn_continue_pressed" from="Menus/PauseMenu" to="." method="_on_pause_menu_btn_continue_pressed"]
