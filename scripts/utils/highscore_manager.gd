@@ -57,5 +57,9 @@ class HighscoreFileHandler extends Node:
 		else:
 			print("Error occurred while saving the highscore.")
 			
+	func deleteAllData() -> void:
+		Highscores = []
+		saveHighscoreData()
+			
 	func addHighScoreData(player_name: String, score: int) -> void:
 		Highscores.append(HighscoreData.new(player_name, score))
