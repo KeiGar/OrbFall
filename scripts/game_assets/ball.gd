@@ -29,6 +29,8 @@ func _physics_process(dt: float) -> void:
 			var n := hit.get_normal()
 			var p := hit.get_position()
 			dir = dir.bounce(n).normalized()
+			dir.x = copysign(randf_range(0.1,1), dir.x)
+			dir = dir.normalized()
 			var rem := hit.get_remainder()
 			velocity = dir * speed
 			remainder = rem
@@ -37,3 +39,9 @@ func _physics_process(dt: float) -> void:
 		else:
 			move_and_collide(remainder, false, true, true)
 			remainder = Vector2.ZERO
+			
+func copysign(a: float, b: float) -> float:
+	if b >= 0:
+		return a
+	else:
+		return -a
