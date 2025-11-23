@@ -1,7 +1,7 @@
 extends Node2D
 @onready var level_scenes: Node2D = $LevelScenes
 @onready var game_timer: Node2D = $GameTimer
-@onready var game_over_screen: BoxContainer = $GameOverScreen
+@onready var game_over_screen: BoxContainer = $Menus/GameOverScreen
 
 signal game_start
 signal pause
@@ -43,11 +43,6 @@ func pauseGame() -> void:
 func quitGame() -> void:
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu_controls.tscn")
 
-func _on_killzone_game_over() -> void:
-	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
-	game_over_screen.visible = true
-	gameEnded = true
-
 func _on_game_start_timer_timeout() -> void:
 	startGameTimerRunning = false
 	level_scenes.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -64,3 +59,8 @@ func _on_game_over_screen_btn_quit_pressed() -> void:
 
 func _on_game_over_screen_btn_restart_pressed() -> void:
 	get_tree().reload_current_scene()
+
+func _on_level_scenes_game_over() -> void:
+	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
+	game_over_screen.visible = true
+	gameEnded = true

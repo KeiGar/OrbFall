@@ -1,7 +1,6 @@
 extends Area2D
 
-signal game_over
+signal killzone_hit
 
 func _on_area_entered(area: Area2D) -> void:
-	print("Game Over!")
-	game_over.emit()
+	killzone_hit.emit()
