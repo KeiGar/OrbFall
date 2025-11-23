@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jurt7"]
 size = Vector2(15, 15)
 
-[node name="Brick" type="Area2D"]
+[node name="Brick" type="StaticBody2D"]
 script = ExtResource("1_0fgdg")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
@@ -14,5 +14,3 @@ polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jurt7")
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
