@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://vo133m8mdrx4"]
+
+[ext_resource type="Script" uid="uid://d0d0gi2rp30cl" path="res://scenes/ball.gd" id="1_7s4qf"]
+
+[node name="Ball" type="AnimatableBody2D"]
+script = ExtResource("1_7s4qf")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.873298, 0.873298, 0.873298, 1)
+polygon = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
