@@ -19,13 +19,19 @@ func _process(delta: float) -> void:
 		get_tree().quit()
 	if Input.is_action_just_pressed("pause_game"):
 		if isGamePaused:
-			isGamePaused = false
-			level_scenes.process_mode = Node.PROCESS_MODE_ALWAYS
-			unpause.emit()
+			unpauseGame()
 		else:
-			isGamePaused = true
-			level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
-			pause.emit()
+			pauseGame()
+			
+func unpauseGame() -> void:
+	isGamePaused = false
+	level_scenes.process_mode = Node.PROCESS_MODE_ALWAYS
+	unpause.emit()
+	
+func pauseGame() -> void:
+	isGamePaused = true
+	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
+	pause.emit()
 
 func _on_killzone_game_over() -> void:
 	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
@@ -34,3 +40,9 @@ func _on_killzone_game_over() -> void:
 func _on_game_start_timer_timeout() -> void:
 	level_scenes.process_mode = Node.PROCESS_MODE_ALWAYS
 	game_timer.queue_free()
+
+func _on_pause_menu_btn_quit_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu_controls.tscn")
+	
+func _on_pause_menu_btn_continue_pressed() -> void:
+	unpauseGame()
