@@ -1,9 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://boconio2cthqd"]
+[gd_scene load_steps=4 format=3 uid="uid://boconio2cthqd"]
 
 [ext_resource type="Script" uid="uid://1lrrhxhkevl3" path="res://scripts/game_assets/brick.gd" id="1_0fgdg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jurt7"]
 size = Vector2(64, 16)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0fgdg"]
+lifetime_randomness = 0.45
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 681.98
+initial_velocity_max = 897.39996
+gravity = Vector3(0, 1, 0)
+scale_min = 6.0
+scale_max = 8.0
+color = Color(1, 0.4745098, 0.16862746, 1)
+turbulence_enabled = true
+turbulence_noise_strength = 14.78
+turbulence_noise_scale = 1.486
 
 [node name="Brick" type="StaticBody2D"]
 script = ExtResource("1_0fgdg")
@@ -14,3 +28,12 @@ polygon = PackedVector2Array(-32, -8, 32, -8, 32, 8, -32, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jurt7")
+
+[node name="BrickDestructionParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 40
+lifetime = 1.6500000000000001
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 10
+process_material = SubResource("ParticleProcessMaterial_0fgdg")
