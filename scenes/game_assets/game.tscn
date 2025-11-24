@@ -41,10 +41,10 @@ wait_time = 3.0
 one_shot = true
 
 [node name="BoxContainer" type="BoxContainer" parent="GameTimer/Game_Start_Timer"]
-offset_left = -20.0
-offset_top = -54.0
-offset_right = 20.0
-offset_bottom = 56.0
+offset_left = -544.0
+offset_top = -96.0
+offset_right = 546.0
+offset_bottom = 57.0
 alignment = 1
 
 [node name="TimerDisplay" type="Label" parent="GameTimer/Game_Start_Timer/BoxContainer"]

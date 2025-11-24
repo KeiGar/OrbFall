@@ -31,6 +31,10 @@ func readUserInput() -> void:
 			unpauseGame()
 		else:
 			pauseGame()	
+	if Input.is_action_just_pressed("slow_down_time"):
+		Engine.set_time_scale(0.35)
+	if Input.is_action_just_released("slow_down_time"):
+		Engine.set_time_scale(1.0)
 			
 func unpauseGame() -> void:
 	isGamePaused = false
