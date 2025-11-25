@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 @export var max_health: int = 1
-@export var particle_lifetime: float = 1.6
+@export var particle_lifetime: float = 0.5
 @onready var brick_destruction_particles: GPUParticles2D = $BrickDestructionParticles
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var polygon: Polygon2D = $Polygon2D

@@ -9,18 +9,19 @@ size = Vector2(64, 16)
 lifetime_randomness = 0.45
 particle_flag_disable_z = true
 spread = 180.0
-initial_velocity_min = 681.98
-initial_velocity_max = 897.39996
-gravity = Vector3(0, 1, 0)
-scale_min = 6.0
-scale_max = 8.0
-color = Color(1, 0.4745098, 0.16862746, 1)
+initial_velocity_min = 205.95
+initial_velocity_max = 421.37
+gravity = Vector3(0, 2000, 0)
+scale_min = 12.849999
+scale_max = 25.13
+color = Color(1.353256, 0.6515752, 0.24533898, 1)
 turbulence_enabled = true
 turbulence_noise_strength = 14.78
 turbulence_noise_scale = 1.486
 
 [node name="Brick" type="StaticBody2D"]
 script = ExtResource("1_0fgdg")
+particle_lifetime = 1.0
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(1, 0.474333, 0.17, 1)
@@ -31,9 +32,13 @@ shape = SubResource("RectangleShape2D_jurt7")
 
 [node name="BrickDestructionParticles" type="GPUParticles2D" parent="."]
 emitting = false
-amount = 40
-lifetime = 1.6500000000000001
+amount = 5
+lifetime = 0.55
 one_shot = true
 explosiveness = 1.0
+randomness = 0.75
+use_fixed_seed = true
+seed = 134888256
 fixed_fps = 10
+fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_0fgdg")
