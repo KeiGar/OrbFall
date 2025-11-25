@@ -1,9 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3ceglkuwrcgy"]
 
+[ext_resource type="Theme" uid="uid://kslgr1vu48c6" path="res://styles/main_menu/style_main_menu.tres" id="1_3dbro"]
 [ext_resource type="Script" uid="uid://bvu3wucuvgrbn" path="res://scripts/menus/main_menu_controls.gd" id="1_8chms"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_c7uy4"]
-font_size = 36
 
 [node name="MainMenuControls" type="BoxContainer"]
 anchors_preset = 8
@@ -17,6 +15,7 @@ offset_right = 48.0
 offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_3dbro")
 theme_override_constants/separation = 20
 alignment = 1
 vertical = true
@@ -24,8 +23,7 @@ script = ExtResource("1_8chms")
 
 [node name="Game_Title" type="Label" parent="."]
 layout_mode = 2
-text = "BreakClone"
-label_settings = SubResource("LabelSettings_c7uy4")
+text = "BREAKCLONE"
 horizontal_alignment = 1
 
 [node name="Btn_Start" type="Button" parent="."]
