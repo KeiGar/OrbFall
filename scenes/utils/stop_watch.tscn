@@ -7,6 +7,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_5s4oe"]
 font = SubResource("FontVariation_5s4oe")
 font_size = 100
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.62352943)
+shadow_offset = Vector2(0, 10)
 
 [node name="StopWatch" type="BoxContainer"]
 alignment = 1

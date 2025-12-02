@@ -8,6 +8,9 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_dqskq"]
 font_size = 100
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.62352943)
+shadow_offset = Vector2(0, 10)
 
 [sub_resource type="SystemFont" id="SystemFont_iywne"]
 subpixel_positioning = 0
@@ -16,6 +19,9 @@ subpixel_positioning = 0
 font = SubResource("SystemFont_iywne")
 font_size = 80
 font_color = Color(0.92941177, 0.06666667, 0.28235295, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.62352943)
+shadow_offset = Vector2(0, 10)
 
 [sub_resource type="GDScript" id="GDScript_lbhrr"]
 script/source = "extends Label

@@ -1,20 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://hf8vnq2gkpah"]
+[gd_scene load_steps=3 format=3 uid="uid://hf8vnq2gkpah"]
 
 [ext_resource type="Script" uid="uid://bmsycgxcjaxru" path="res://scripts/menus/highscore_saving_screen.gd" id="1_nqqvx"]
-
-[sub_resource type="FontVariation" id="FontVariation_mgib8"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_nqqvx"]
-font = SubResource("FontVariation_mgib8")
-font_size = 80
-font_color = Color(0.8901961, 1, 0.2784314, 1)
-
-[sub_resource type="FontVariation" id="FontVariation_nqqvx"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_qoktr"]
-font = SubResource("FontVariation_nqqvx")
-font_size = 70
-font_color = Color(0.8901961, 1, 0.2784314, 1)
+[ext_resource type="Theme" uid="uid://kslgr1vu48c6" path="res://styles/main_menu/style_main_menu.tres" id="1_qoktr"]
 
 [node name="HighscoreSavingScreen" type="BoxContainer"]
 anchors_preset = 8
@@ -28,6 +15,7 @@ offset_right = 128.5
 offset_bottom = 58.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_qoktr")
 theme_override_constants/separation = 20
 alignment = 1
 vertical = true
@@ -36,17 +24,15 @@ script = ExtResource("1_nqqvx")
 [node name="LBLNewHighscore" type="Label" parent="."]
 layout_mode = 2
 text = "NEW HIGHSCORE!"
-label_settings = SubResource("LabelSettings_nqqvx")
 horizontal_alignment = 1
 
 [node name="LBLScore" type="Label" parent="."]
 layout_mode = 2
 text = "0"
-label_settings = SubResource("LabelSettings_qoktr")
 horizontal_alignment = 1
 
 [node name="PlayerNameTextField" type="TextEdit" parent="."]
-custom_minimum_size = Vector2(200, 35)
+custom_minimum_size = Vector2(200, 55)
 layout_mode = 2
 placeholder_text = "Enter your name!"
 tab_input_mode = false
