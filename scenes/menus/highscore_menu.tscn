@@ -1,10 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dymimjcrkx72l"]
+[gd_scene load_steps=5 format=3 uid="uid://dymimjcrkx72l"]
 
 [ext_resource type="Script" uid="uid://d4b10t5ymxudx" path="res://scripts/menus/highscore_menu.gd" id="1_3pnpd"]
 [ext_resource type="Theme" uid="uid://kslgr1vu48c6" path="res://styles/main_menu/style_main_menu.tres" id="1_haig6"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_3pnpd"]
-font_size = 36
+[sub_resource type="SystemFont" id="SystemFont_haig6"]
+font_weight = 100
+subpixel_positioning = 0
+
+[sub_resource type="Theme" id="Theme_haig6"]
+default_font = SubResource("SystemFont_haig6")
+default_font_size = 30
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 30
 
 [node name="HighscoreMenu" type="BoxContainer"]
 anchors_preset = 8
@@ -26,13 +38,15 @@ script = ExtResource("1_3pnpd")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-text = "Highscore"
-label_settings = SubResource("LabelSettings_3pnpd")
+text = "HIGHSCORE"
 horizontal_alignment = 1
 
 [node name="HighscoreTable" type="GridContainer" parent="."]
 layout_mode = 2
 size_flags_stretch_ratio = 1.05
+theme = SubResource("Theme_haig6")
+theme_override_constants/h_separation = 200
+theme_override_constants/v_separation = 2
 columns = 3
 
 [node name="Btn_Return" type="Button" parent="."]
