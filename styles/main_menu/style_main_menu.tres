@@ -1,15 +1,7 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://kslgr1vu48c6"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://kslgr1vu48c6"]
 
 [ext_resource type="StyleBox" uid="uid://bhcupxakggxs6" path="res://styles/main_menu/stylebox_button.tres" id="1_bd13y"]
-
-[sub_resource type="SystemFont" id="SystemFont_ap8hr"]
-font_names = PackedStringArray("Fantasy")
-font_weight = 500
-subpixel_positioning = 0
-
-[sub_resource type="FontVariation" id="FontVariation_wcqp4"]
-base_font = SubResource("SystemFont_ap8hr")
-variation_embolden = 0.75
+[ext_resource type="FontFile" uid="uid://dfbrfi1pnqbms" path="res://styles/fonts/PublicPixel-rv0pA.ttf" id="2_ap8hr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcqjs"]
 content_margin_left = 4.0
@@ -27,10 +19,11 @@ corner_detail = 5
 content_margin_top = 15.0
 content_margin_bottom = 15.0
 bg_color = Color(0.67058825, 0.6039216, 0.1882353, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4lp7t"]
 content_margin_left = 4.0
@@ -38,11 +31,11 @@ content_margin_top = 15.0
 content_margin_right = 4.0
 content_margin_bottom = 15.0
 bg_color = Color(0.8784314, 0.79607844, 0.24705882, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-corner_detail = 5
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cr45h"]
 content_margin_left = 4.0
@@ -50,19 +43,11 @@ content_margin_top = 15.0
 content_margin_right = 4.0
 content_margin_bottom = 15.0
 bg_color = Color(0.9490196, 0.85882354, 0.26666668, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="SystemFont" id="SystemFont_bd13y"]
-font_names = PackedStringArray("Fantasy")
-
-[sub_resource type="FontVariation" id="FontVariation_ap8hr"]
-base_font = SubResource("SystemFont_bd13y")
-variation_embolden = 2.0
-spacing_glyph = 10
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olic7"]
 content_margin_left = 4.0
@@ -86,9 +71,6 @@ expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ip21h"]
-
-[sub_resource type="SystemFont" id="SystemFont_ip21h"]
-font_names = PackedStringArray("Fantasy")
 
 [sub_resource type="DPITexture" id="DPITexture_q5eem"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8\" height=\"8\"><circle cx=\"4\" cy=\"4\" r=\"1.5\" fill=\"#b2b2b2\" fill-opacity=\".25\"/></svg>
@@ -166,7 +148,7 @@ Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 25
-Button/fonts/font = SubResource("FontVariation_wcqp4")
+Button/fonts/font = ExtResource("2_ap8hr")
 Button/styles/disabled = SubResource("StyleBoxFlat_lcqjs")
 Button/styles/focus = SubResource("StyleBoxFlat_3wiw1")
 Button/styles/hover = SubResource("StyleBoxFlat_4lp7t")
@@ -174,14 +156,14 @@ Button/styles/normal = ExtResource("1_bd13y")
 Button/styles/pressed = SubResource("StyleBoxFlat_cr45h")
 Label/colors/font_color = Color(0.9490196, 0.85882354, 0.26666668, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/colors/font_shadow_color = Color(0, 0, 0, 0.49803922)
+Label/colors/font_shadow_color = Color(0.70796657, 0.7079665, 0.7079665, 0.62352943)
 Label/constants/line_spacing = 3
 Label/constants/outline_size = 0
 Label/constants/shadow_offset_x = 0
-Label/constants/shadow_offset_y = 10
-Label/constants/shadow_outline_size = 20
+Label/constants/shadow_offset_y = 5
+Label/constants/shadow_outline_size = 5
 Label/font_sizes/font_size = 80
-Label/fonts/font = SubResource("FontVariation_ap8hr")
+Label/fonts/font = ExtResource("2_ap8hr")
 Label/styles/focus = SubResource("StyleBoxFlat_olic7")
 Label/styles/normal = SubResource("StyleBoxEmpty_ip21h")
 TextEdit/colors/background_color = Color(0, 0, 0, 0)
@@ -201,7 +183,7 @@ TextEdit/constants/caret_width = 2
 TextEdit/constants/line_spacing = 4
 TextEdit/constants/outline_size = 2
 TextEdit/font_sizes/font_size = 30
-TextEdit/fonts/font = SubResource("SystemFont_ip21h")
+TextEdit/fonts/font = ExtResource("2_ap8hr")
 TextEdit/icons/space = SubResource("DPITexture_q5eem")
 TextEdit/icons/tab = SubResource("DPITexture_3mmmb")
 TextEdit/styles/focus = SubResource("StyleBoxFlat_k0ojj")

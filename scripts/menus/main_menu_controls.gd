@@ -1,4 +1,4 @@
-extends BoxContainer
+extends Control
 const GAME = preload("uid://dld6rt8cylm2")
 const HIGHSCORE_MENU = preload("uid://dymimjcrkx72l")
 

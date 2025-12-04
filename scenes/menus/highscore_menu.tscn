@@ -2,14 +2,11 @@
 
 [ext_resource type="Script" uid="uid://d4b10t5ymxudx" path="res://scripts/menus/highscore_menu.gd" id="1_3pnpd"]
 [ext_resource type="Theme" uid="uid://kslgr1vu48c6" path="res://styles/main_menu/style_main_menu.tres" id="1_haig6"]
-
-[sub_resource type="SystemFont" id="SystemFont_haig6"]
-font_weight = 100
-subpixel_positioning = 0
+[ext_resource type="FontFile" uid="uid://dfbrfi1pnqbms" path="res://styles/fonts/PublicPixel-rv0pA.ttf" id="3_54ooy"]
 
 [sub_resource type="Theme" id="Theme_haig6"]
-default_font = SubResource("SystemFont_haig6")
-default_font_size = 30
+default_font = ExtResource("3_54ooy")
+default_font_size = 15
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
@@ -18,30 +15,56 @@ Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 30
 
-[node name="HighscoreMenu" type="BoxContainer"]
+[node name="HighscoreMenu" type="Control"]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -102.5
-offset_top = -72.0
-offset_right = 102.5
-offset_bottom = 72.0
+offset_left = -562.5
+offset_top = -500.0
+offset_right = 562.5
+offset_bottom = 500.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("1_haig6")
-theme_override_constants/separation = 20
-alignment = 1
-vertical = true
 script = ExtResource("1_3pnpd")
 
-[node name="Label" type="Label" parent="."]
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -101.0
+offset_right = 360.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "HIGHSCORE"
 horizontal_alignment = 1
 
-[node name="HighscoreTable" type="GridContainer" parent="."]
+[node name="HighscoreTable" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_stretch_ratio = 1.05
 theme = SubResource("Theme_haig6")
@@ -49,13 +72,13 @@ theme_override_constants/h_separation = 200
 theme_override_constants/v_separation = 2
 columns = 3
 
-[node name="Btn_Return" type="Button" parent="."]
+[node name="Btn_Return" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Return"
 
-[node name="Btn_Delete" type="Button" parent="."]
+[node name="Btn_Delete" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Delete All Data"
 
-[connection signal="pressed" from="Btn_Return" to="." method="_on_btn_return_pressed"]
-[connection signal="pressed" from="Btn_Delete" to="." method="_on_btn_delete_pressed"]
+[connection signal="pressed" from="VBoxContainer/Btn_Return" to="." method="_on_btn_return_pressed"]
+[connection signal="pressed" from="VBoxContainer/Btn_Delete" to="." method="_on_btn_delete_pressed"]

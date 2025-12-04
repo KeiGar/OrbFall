@@ -1,7 +1,7 @@
-extends BoxContainer
-@onready var player_name_text_field: TextEdit = $PlayerNameTextField
-@onready var save_button: Button = $SaveButton
-@onready var lbl_score: Label = $LBLScore
+extends Control
+@onready var player_name_text_field: TextEdit = $VBoxContainer/PlayerNameTextField
+@onready var lbl_score: Label = $VBoxContainer/LBLScore
+@onready var save_button: Button = $VBoxContainer/SaveButton
 var player_name: String = ""
 var player_score: int = 0
 var fileHandler:= HighscoreManager.HighscoreFileHandler.new()

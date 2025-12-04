@@ -2,42 +2,32 @@
 
 [ext_resource type="Script" uid="uid://d1b7odoxshqad" path="res://scripts/game_assets/game.gd" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://ccm70s242m0kt" path="res://scripts/game_assets/game_timer.gd" id="2_iywne"]
+[ext_resource type="FontFile" uid="uid://dfbrfi1pnqbms" path="res://styles/fonts/PublicPixel-rv0pA.ttf" id="2_pc6uq"]
 [ext_resource type="PackedScene" uid="uid://bfexw7mgg1cck" path="res://scenes/game_assets/level_scene.tscn" id="3_dqskq"]
 [ext_resource type="PackedScene" uid="uid://cd0hrtf2laq6a" path="res://scenes/menus/game_over_screen.tscn" id="7_po76p"]
 [ext_resource type="PackedScene" uid="uid://epwevbbl7hwq" path="res://scenes/menus/pause_menu.tscn" id="7_u5sy4"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_dqskq"]
-font_size = 100
-shadow_size = 10
-shadow_color = Color(0, 0, 0, 0.62352943)
-shadow_offset = Vector2(0, 10)
-
-[sub_resource type="SystemFont" id="SystemFont_iywne"]
-subpixel_positioning = 0
-
 [sub_resource type="LabelSettings" id="LabelSettings_p57ef"]
-font = SubResource("SystemFont_iywne")
+font = ExtResource("2_pc6uq")
 font_size = 80
 font_color = Color(0.92941177, 0.06666667, 0.28235295, 1)
-shadow_size = 10
-shadow_color = Color(0, 0, 0, 0.62352943)
-shadow_offset = Vector2(0, 10)
+shadow_size = 5
+shadow_color = Color(0.70796657, 0.7079665, 0.7079665, 0.62352943)
+shadow_offset = Vector2(0, 5)
 
 [sub_resource type="GDScript" id="GDScript_lbhrr"]
 script/source = "extends Label
 "
 
+[sub_resource type="LabelSettings" id="LabelSettings_dqskq"]
+font = ExtResource("2_pc6uq")
+font_size = 70
+shadow_size = 5
+shadow_color = Color(0.70796657, 0.7079665, 0.7079665, 0.62352943)
+shadow_offset = Vector2(0, 10)
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")
-
-[node name="ScoreLabel" type="Label" parent="."]
-offset_left = -544.0
-offset_top = -465.0
-offset_bottom = -226.0
-text = "0"
-label_settings = SubResource("LabelSettings_dqskq")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="GameTimer" type="Node2D" parent="."]
 script = ExtResource("2_iywne")
@@ -64,6 +54,15 @@ script = SubResource("GDScript_lbhrr")
 position = Vector2(0, -21)
 
 [node name="LevelScenes" parent="." instance=ExtResource("3_dqskq")]
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = -544.0
+offset_top = -465.0
+offset_bottom = -226.0
+text = "0"
+label_settings = SubResource("LabelSettings_dqskq")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Menus" type="Node2D" parent="."]
 
