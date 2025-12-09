@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dld6rt8cylm2"]
+[gd_scene load_steps=12 format=3 uid="uid://dld6rt8cylm2"]
 
 [ext_resource type="Script" uid="uid://d1b7odoxshqad" path="res://scripts/game_assets/game.gd" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://ccm70s242m0kt" path="res://scripts/game_assets/game_timer.gd" id="2_iywne"]
@@ -25,6 +25,15 @@ font_size = 70
 shadow_size = 5
 shadow_color = Color(0.70796657, 0.7079665, 0.7079665, 0.62352943)
 shadow_offset = Vector2(0, 10)
+
+[sub_resource type="Gradient" id="Gradient_pc6uq"]
+offsets = PackedFloat32Array(0.36764705, 1)
+colors = PackedColorArray(0.77, 0.77, 0.77, 0.16078432, 0, 0, 0, 0.57254905)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t70e6"]
+gradient = SubResource("Gradient_pc6uq")
+fill = 1
+fill_from = Vector2(0.52136755, 0.44444445)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")
@@ -74,6 +83,17 @@ alignment = 1
 
 [node name="PauseMenu" parent="Menus" instance=ExtResource("7_u5sy4")]
 visible = false
+
+[node name="PostEffects" type="Node2D" parent="."]
+
+[node name="VigneteEffect" type="TextureRect" parent="PostEffects"]
+visible = false
+offset_left = -631.317
+offset_top = -523.0
+offset_right = 639.0
+offset_bottom = 533.0
+size_flags_horizontal = 4
+texture = SubResource("GradientTexture2D_t70e6")
 
 [connection signal="game_start" from="." to="GameTimer" method="_on_game_game_start"]
 [connection signal="pause" from="." to="Menus/PauseMenu" method="_on_game_pause"]

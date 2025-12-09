@@ -3,6 +3,7 @@ extends Node2D
 @onready var game_timer: Node2D = $GameTimer
 @onready var game_over_screen: BoxContainer = $Menus/GameOverScreen
 @onready var score_label: Label = $ScoreLabel
+@onready var vignete_effect: TextureRect = $PostEffects/VigneteEffect
 
 signal game_start
 signal pause
@@ -33,8 +34,10 @@ func readUserInput() -> void:
 			pauseGame()	
 	if Input.is_action_just_pressed("slow_down_time"):
 		Engine.set_time_scale(0.35)
+		vignete_effect.visible = true
 	if Input.is_action_just_released("slow_down_time"):
 		Engine.set_time_scale(1.0)
+		vignete_effect.visible = false
 			
 func unpauseGame() -> void:
 	isGamePaused = false
