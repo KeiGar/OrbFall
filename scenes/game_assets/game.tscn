@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dld6rt8cylm2"]
+[gd_scene load_steps=16 format=3 uid="uid://dld6rt8cylm2"]
 
 [ext_resource type="Script" uid="uid://d1b7odoxshqad" path="res://scripts/game_assets/game.gd" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://ccm70s242m0kt" path="res://scripts/game_assets/game_timer.gd" id="2_iywne"]
@@ -27,13 +27,65 @@ shadow_color = Color(0.70796657, 0.7079665, 0.7079665, 0.62352943)
 shadow_offset = Vector2(0, 10)
 
 [sub_resource type="Gradient" id="Gradient_pc6uq"]
-offsets = PackedFloat32Array(0.36764705, 1)
-colors = PackedColorArray(0.77, 0.77, 0.77, 0.16078432, 0, 0, 0, 0.57254905)
+offsets = PackedFloat32Array(0.38235295, 1)
+colors = PackedColorArray(0.22, 0.22, 0.22, 0.30980393, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_t70e6"]
 gradient = SubResource("Gradient_pc6uq")
 fill = 1
 fill_from = Vector2(0.52136755, 0.44444445)
+
+[sub_resource type="Animation" id="Animation_pc6uq"]
+resource_name = "camera_zoom_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_t70e6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_po76p"]
+resource_name = "camera_zoom_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t70e6"]
+_data = {
+&"RESET": SubResource("Animation_t70e6"),
+&"camera_zoom_animation": SubResource("Animation_pc6uq"),
+&"camera_zoom_out": SubResource("Animation_po76p")
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")
@@ -94,6 +146,12 @@ offset_right = 639.0
 offset_bottom = 533.0
 size_flags_horizontal = 4
 texture = SubResource("GradientTexture2D_t70e6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PostEffects"]
+libraries = {
+&"": SubResource("AnimationLibrary_t70e6")
+}
+speed_scale = 3.874
 
 [connection signal="game_start" from="." to="GameTimer" method="_on_game_game_start"]
 [connection signal="pause" from="." to="Menus/PauseMenu" method="_on_game_pause"]

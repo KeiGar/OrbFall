@@ -4,6 +4,9 @@ extends Node2D
 @onready var game_over_screen: BoxContainer = $Menus/GameOverScreen
 @onready var score_label: Label = $ScoreLabel
 @onready var vignete_effect: TextureRect = $PostEffects/VigneteEffect
+@onready var animation_player: AnimationPlayer = $PostEffects/AnimationPlayer
+@onready var camera: Camera2D = $Camera2D
+
 
 signal game_start
 signal pause
@@ -13,18 +16,24 @@ var isGamePaused = false
 var gameEnded = false
 var startGameTimerRunning = false
 var player_score := 0
+var camera_original_pos: Vector2
+var is_time_slowed_down = false
 
 func _ready() -> void:
 	game_over_screen.visible = false
 	startGameTimerRunning = true
 	game_start.emit()
 	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
+	camera_original_pos = camera.position
 	
 func _process(delta: float) -> void:
-	if not (gameEnded or startGameTimerRunning):
-		readUserInput()
-		
-func readUserInput() -> void:
+	readUserInput_MenuControls()
+	if not (gameEnded or startGameTimerRunning or isGamePaused):
+		readUserInput_GameControls()
+		if is_time_slowed_down:
+			camera.position = level_scenes.get_ball_position()
+		 
+func readUserInput_MenuControls() -> void:
 	if Input.is_action_pressed("quit_game"):
 		get_tree().quit(0)
 	if Input.is_action_just_pressed("pause_game"):
@@ -32,12 +41,29 @@ func readUserInput() -> void:
 			unpauseGame()
 		else:
 			pauseGame()	
+			
+func readUserInput_GameControls() -> void:
 	if Input.is_action_just_pressed("slow_down_time"):
-		Engine.set_time_scale(0.35)
-		vignete_effect.visible = true
+		slowTime()
 	if Input.is_action_just_released("slow_down_time"):
+		revertTime()
+			
+func slowTime() -> void:
+	if not is_time_slowed_down:
+		Engine.set_time_scale(0.35)
+		camera.position = level_scenes.get_ball_position()
+		animation_player.play("camera_zoom_animation")
+		#vignete_effect.visible = true
+		is_time_slowed_down = true
+		
+func revertTime() -> void:
+	if is_time_slowed_down:
 		Engine.set_time_scale(1.0)
-		vignete_effect.visible = false
+		#vignete_effect.visible = false
+		camera.position = camera_original_pos
+		is_time_slowed_down = false
+		animation_player.play("camera_zoom_out")
+		
 			
 func unpauseGame() -> void:
 	isGamePaused = false
@@ -45,6 +71,7 @@ func unpauseGame() -> void:
 	unpause.emit()
 	
 func pauseGame() -> void:
+	revertTime()
 	isGamePaused = true
 	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
 	pause.emit()
@@ -71,6 +98,7 @@ func _on_game_over_screen_btn_restart_pressed() -> void:
 	get_tree().reload_current_scene()
 
 func _on_level_scenes_game_over() -> void:
+	revertTime()
 	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
 	game_over_screen.visible = true
 	gameEnded = true
