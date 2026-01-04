@@ -27,20 +27,24 @@ func _ready() -> void:
 	camera_original_pos = camera.position
 	
 func _process(delta: float) -> void:
-	readUserInput_MenuControls()
-	if not (gameEnded or startGameTimerRunning or isGamePaused):
-		readUserInput_GameControls()
-		if is_time_slowed_down:
-			camera.position = level_scenes.get_ball_position()
+	readUserInput_GeneralControls()
+	if not (gameEnded or startGameTimerRunning):
+		readUserInput_MenuControls()
+		if not isGamePaused:
+			readUserInput_GameControls()
+			if is_time_slowed_down:
+				camera.position = level_scenes.get_ball_position()
 		 
 func readUserInput_MenuControls() -> void:
-	if Input.is_action_pressed("quit_game"):
-		get_tree().quit(0)
 	if Input.is_action_just_pressed("pause_game"):
 		if isGamePaused:
 			unpauseGame()
 		else:
 			pauseGame()	
+			
+func readUserInput_GeneralControls() -> void:
+	if Input.is_action_pressed("quit_game"):
+		get_tree().quit(0)
 			
 func readUserInput_GameControls() -> void:
 	if Input.is_action_just_pressed("slow_down_time"):
