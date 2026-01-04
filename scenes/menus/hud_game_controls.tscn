@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtjn82e0kob50"]
+
+[ext_resource type="FontFile" uid="uid://dfbrfi1pnqbms" path="res://styles/fonts/PublicPixel-rv0pA.ttf" id="1_2p3fb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8im2c"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r5pdl"]
+
+[sub_resource type="Theme" id="Theme_p6vpu"]
+Label/colors/font_color = Color(1, 1, 1, 0.69411767)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("1_2p3fb")
+Label/styles/focus = SubResource("StyleBoxFlat_8im2c")
+Label/styles/normal = SubResource("StyleBoxEmpty_r5pdl")
+
+[node name="HUDGameControls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_p6vpu")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -426.0
+offset_top = -280.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="LBL_KEY_A" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "A - Move Left"
+horizontal_alignment = 3
+
+[node name="LBL_KEY_D" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "D - Move Right"
+horizontal_alignment = 3
+
+[node name="LBL_KEY_SHIFT" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Shift - Slow Time"
+horizontal_alignment = 3
+
+[node name="GridContainer3" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 107.0
+offset_top = -280.0
+offset_right = 1125.0
+grow_vertical = 0
+
+[node name="LBL_KEY_F1" type="Label" parent="GridContainer3"]
+layout_mode = 2
+text = "F1 -  Controls"
+horizontal_alignment = 3
+
+[node name="LBL_KEY_F4" type="Label" parent="GridContainer3"]
+layout_mode = 2
+text = "F4 - Quit"
+horizontal_alignment = 3
+
+[node name="LBL_KEY_ESC" type="Label" parent="GridContainer3"]
+layout_mode = 2
+text = "ESC - Pause"
+horizontal_alignment = 3

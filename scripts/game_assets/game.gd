@@ -6,6 +6,7 @@ extends Node2D
 @onready var vignete_effect: TextureRect = $PostEffects/VigneteEffect
 @onready var animation_player: AnimationPlayer = $PostEffects/AnimationPlayer
 @onready var camera: Camera2D = $Camera2D
+@onready var hud_game_controls: Control = $HUDGameControls
 
 
 signal game_start
@@ -43,6 +44,8 @@ func readUserInput_MenuControls() -> void:
 			pauseGame()	
 			
 func readUserInput_GeneralControls() -> void:
+	if Input.is_action_just_released("toggle_hud"):
+		hud_game_controls.visible = not hud_game_controls.visible
 	if Input.is_action_pressed("quit_game"):
 		get_tree().quit(0)
 			

@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://dld6rt8cylm2"]
+[gd_scene load_steps=17 format=3 uid="uid://dld6rt8cylm2"]
 
 [ext_resource type="Script" uid="uid://d1b7odoxshqad" path="res://scripts/game_assets/game.gd" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://ccm70s242m0kt" path="res://scripts/game_assets/game_timer.gd" id="2_iywne"]
 [ext_resource type="FontFile" uid="uid://dfbrfi1pnqbms" path="res://styles/fonts/PublicPixel-rv0pA.ttf" id="2_pc6uq"]
 [ext_resource type="PackedScene" uid="uid://bfexw7mgg1cck" path="res://scenes/game_assets/level_scene.tscn" id="3_dqskq"]
 [ext_resource type="PackedScene" uid="uid://cd0hrtf2laq6a" path="res://scenes/menus/game_over_screen.tscn" id="7_po76p"]
+[ext_resource type="PackedScene" uid="uid://dtjn82e0kob50" path="res://scenes/menus/hud_game_controls.tscn" id="7_t70e6"]
 [ext_resource type="PackedScene" uid="uid://epwevbbl7hwq" path="res://scenes/menus/pause_menu.tscn" id="7_u5sy4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p57ef"]
@@ -154,6 +155,17 @@ libraries = {
 &"": SubResource("AnimationLibrary_t70e6")
 }
 speed_scale = 3.874
+
+[node name="HUDGameControls" parent="." instance=ExtResource("7_t70e6")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 473.0
+offset_bottom = 473.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
 [connection signal="game_start" from="." to="GameTimer" method="_on_game_game_start"]
 [connection signal="pause" from="." to="Menus/PauseMenu" method="_on_game_pause"]
