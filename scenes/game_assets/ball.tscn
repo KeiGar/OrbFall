@@ -1,21 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://vo133m8mdrx4"]
+[gd_scene load_steps=4 format=3 uid="uid://vo133m8mdrx4"]
 
 [ext_resource type="Script" uid="uid://d0d0gi2rp30cl" path="res://scripts/game_assets/ball.gd" id="1_7s4qf"]
+[ext_resource type="AudioStream" uid="uid://px4l2pwn0xv2" path="res://assets/sounds/8-bit-explosion-11-340459.mp3" id="2_u58ax"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yvfo8"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 25.0
+scale_max = 25.0
+color = Color(0.8784314, 0.8784314, 0.8784314, 0.3372549)
 
 [node name="Ball" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_7s4qf")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(0.97206455, 0.8429974, 0.83699393, 1)
-polygon = PackedVector2Array(-13, -13, 13, -13, 13, 13, -13, 13)
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 3
+lifetime = 0.05
+process_material = SubResource("ParticleProcessMaterial_yvfo8")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(-4.68981, -4.68981)
 scale = Vector2(9.86149, 9.86149)
 polygon = PackedVector2Array(-0.84269, -0.84269, 1.79383, -0.84269, 1.79383, 1.79383, -0.84269, 1.79383)
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.97206455, 0.8429974, 0.83699393, 1)
+polygon = PackedVector2Array(-13, -13, 13, -13, 13, 13, -13, 13)
+
 [node name="SpeedUpTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_u58ax")
+volume_db = -6.73
+pitch_scale = 2.0
 
 [connection signal="ball_collision" from="." to="." method="_on_ball_collision"]

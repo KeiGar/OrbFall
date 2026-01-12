@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cd0hrtf2laq6a"]
+[gd_scene load_steps=5 format=3 uid="uid://cd0hrtf2laq6a"]
 
 [ext_resource type="Script" uid="uid://pi3ngqwfc1dh" path="res://scripts/menus/game_over_screen.gd" id="1_agkj2"]
-
-[sub_resource type="FontVariation" id="FontVariation_p57ef"]
+[ext_resource type="Theme" uid="uid://kslgr1vu48c6" path="res://styles/main_menu/style_main_menu.tres" id="1_bcvxg"]
+[ext_resource type="FontFile" uid="uid://dfbrfi1pnqbms" path="res://styles/fonts/PublicPixel-rv0pA.ttf" id="3_a8ias"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]
-font = SubResource("FontVariation_p57ef")
+font = ExtResource("3_a8ias")
 font_size = 80
 font_color = Color(1, 0.089999974, 0.089999974, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.49803922)
+shadow_offset = Vector2(0, 10)
 
 [node name="GameOverScreen" type="BoxContainer"]
 anchors_preset = 8
@@ -21,6 +24,7 @@ offset_right = 313.5
 offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_bcvxg")
 theme_override_constants/separation = 20
 vertical = true
 script = ExtResource("1_agkj2")

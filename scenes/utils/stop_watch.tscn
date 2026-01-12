@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4t7coci0xjpv"]
+
+[ext_resource type="Script" uid="uid://cxti8s5m0g7xb" path="res://scripts/utils/stop_watch.gd" id="1_3muwl"]
+[ext_resource type="FontFile" uid="uid://dfbrfi1pnqbms" path="res://styles/fonts/PublicPixel-rv0pA.ttf" id="2_p0ryv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5s4oe"]
+font = ExtResource("2_p0ryv")
+font_size = 70
+shadow_size = 5
+shadow_color = Color(0.70796657, 0.7079665, 0.7079665, 0.62352943)
+shadow_offset = Vector2(0, 10)
+
+[node name="StopWatch" type="BoxContainer"]
+alignment = 1
+vertical = true
+script = ExtResource("1_3muwl")
+
+[node name="LBLTime" type="Label" parent="."]
+layout_mode = 2
+text = "00:00"
+label_settings = SubResource("LabelSettings_5s4oe")
+horizontal_alignment = 1

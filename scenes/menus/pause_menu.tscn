@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://epwevbbl7hwq"]
+[gd_scene load_steps=4 format=3 uid="uid://epwevbbl7hwq"]
 
+[ext_resource type="Theme" uid="uid://kslgr1vu48c6" path="res://styles/main_menu/style_main_menu.tres" id="1_7unhi"]
 [ext_resource type="Script" uid="uid://cpwl38eou12wr" path="res://scripts/menus/pause_menu.gd" id="1_n87rw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uahpa"]
-font_size = 36
+font_size = 50
+shadow_size = 2
+shadow_color = Color(0.70796657, 0.7079665, 0.7079665, 0.62352943)
+shadow_offset = Vector2(0, 5)
 
 [node name="PauseMenu" type="BoxContainer"]
 anchors_preset = 8
@@ -17,7 +21,8 @@ offset_right = 56.0
 offset_bottom = 46.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+theme = ExtResource("1_7unhi")
+theme_override_constants/separation = 30
 alignment = 1
 vertical = true
 script = ExtResource("1_n87rw")

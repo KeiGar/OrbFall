@@ -1,5 +1,6 @@
 extends Node2D
 @onready var brick_tiles: TileMapLayer = $BrickTiles
+@onready var ball: CharacterBody2D = $Ball
 signal game_over
 signal increment_points(incr: int)
 
@@ -12,3 +13,6 @@ func _on_ball_ball_collision(collider: Node) -> void:
 
 func _on_killzone_body_entered(body: Node2D) -> void:
 	game_over.emit()
+	
+func get_ball_position() -> Vector2:
+	return ball.position

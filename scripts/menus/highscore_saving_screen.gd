@@ -1,7 +1,7 @@
-extends BoxContainer
-@onready var player_name_text_field: TextEdit = $PlayerNameTextField
-@onready var save_button: Button = $SaveButton
-@onready var lbl_score: Label = $LBLScore
+extends Control
+@onready var player_name_text_field: TextEdit = $VBoxContainer/PlayerNameTextField
+@onready var lbl_score: Label = $VBoxContainer/LBLScore
+@onready var save_button: Button = $VBoxContainer/SaveButton
 var player_name: String = ""
 var player_score: int = 0
 var fileHandler:= HighscoreManager.HighscoreFileHandler.new()
@@ -26,3 +26,7 @@ func _on_player_name_text_field_text_changed() -> void:
 		save_button.disabled = false
 	else:
 		save_button.disabled = true
+
+func _input(event: InputEvent) -> void:
+	if Input.is_key_pressed(KEY_ENTER):
+		get_viewport().set_input_as_handled()
