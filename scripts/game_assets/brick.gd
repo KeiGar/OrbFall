@@ -5,6 +5,7 @@ extends StaticBody2D
 @onready var brick_destruction_particles: GPUParticles2D = $BrickDestructionParticles
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var polygon: Polygon2D = $Polygon2D
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 var current_health: int
 
 # Called when the node enters the scene tree for the first time.
@@ -16,6 +17,7 @@ func _ready() -> void:
 func on_ball_hit() -> void:
 	current_health -= 1
 	if current_health <= 0:
+		audio_stream_player.play(0.27)
 		brick_destruction_particles.emitting = true
 		polygon.visible = false
 		collision_shape.disabled = true

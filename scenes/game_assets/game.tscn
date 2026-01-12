@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dld6rt8cylm2"]
+[gd_scene load_steps=18 format=3 uid="uid://dld6rt8cylm2"]
 
 [ext_resource type="Script" uid="uid://d1b7odoxshqad" path="res://scripts/game_assets/game.gd" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://ccm70s242m0kt" path="res://scripts/game_assets/game_timer.gd" id="2_iywne"]
 [ext_resource type="FontFile" uid="uid://dfbrfi1pnqbms" path="res://styles/fonts/PublicPixel-rv0pA.ttf" id="2_pc6uq"]
 [ext_resource type="PackedScene" uid="uid://bfexw7mgg1cck" path="res://scenes/game_assets/level_scene.tscn" id="3_dqskq"]
+[ext_resource type="AudioStream" uid="uid://px4l2pwn0xv2" path="res://assets/sounds/8-bit-explosion-11-340459.mp3" id="4_po76p"]
 [ext_resource type="PackedScene" uid="uid://cd0hrtf2laq6a" path="res://scenes/menus/game_over_screen.tscn" id="7_po76p"]
+[ext_resource type="PackedScene" uid="uid://dtjn82e0kob50" path="res://scenes/menus/hud_game_controls.tscn" id="7_t70e6"]
 [ext_resource type="PackedScene" uid="uid://epwevbbl7hwq" path="res://scenes/menus/pause_menu.tscn" id="7_u5sy4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p57ef"]
@@ -25,6 +27,67 @@ font_size = 70
 shadow_size = 5
 shadow_color = Color(0.70796657, 0.7079665, 0.7079665, 0.62352943)
 shadow_offset = Vector2(0, 10)
+
+[sub_resource type="Gradient" id="Gradient_pc6uq"]
+offsets = PackedFloat32Array(0.38235295, 1)
+colors = PackedColorArray(0.22, 0.22, 0.22, 0.30980393, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t70e6"]
+gradient = SubResource("Gradient_pc6uq")
+fill = 1
+fill_from = Vector2(0.52136755, 0.44444445)
+
+[sub_resource type="Animation" id="Animation_t70e6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pc6uq"]
+resource_name = "camera_zoom_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_po76p"]
+resource_name = "camera_zoom_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t70e6"]
+_data = {
+&"RESET": SubResource("Animation_t70e6"),
+&"camera_zoom_animation": SubResource("Animation_pc6uq"),
+&"camera_zoom_out": SubResource("Animation_po76p")
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")
@@ -52,6 +115,8 @@ script = SubResource("GDScript_lbhrr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -21)
+position_smoothing_enabled = true
+position_smoothing_speed = 25.0
 
 [node name="LevelScenes" parent="." instance=ExtResource("3_dqskq")]
 
@@ -74,6 +139,39 @@ alignment = 1
 
 [node name="PauseMenu" parent="Menus" instance=ExtResource("7_u5sy4")]
 visible = false
+
+[node name="PostEffects" type="Node2D" parent="."]
+
+[node name="VigneteEffect" type="TextureRect" parent="PostEffects"]
+visible = false
+offset_left = -631.317
+offset_top = -523.0
+offset_right = 639.0
+offset_bottom = 533.0
+size_flags_horizontal = 4
+texture = SubResource("GradientTexture2D_t70e6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PostEffects"]
+libraries = {
+&"": SubResource("AnimationLibrary_t70e6")
+}
+speed_scale = 3.874
+
+[node name="HUDGameControls" parent="." instance=ExtResource("7_t70e6")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 473.0
+offset_bottom = 473.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_po76p")
+volume_db = -4.894
+pitch_scale = 0.25
 
 [connection signal="game_start" from="." to="GameTimer" method="_on_game_game_start"]
 [connection signal="pause" from="." to="Menus/PauseMenu" method="_on_game_pause"]

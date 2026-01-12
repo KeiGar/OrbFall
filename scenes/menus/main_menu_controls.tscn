@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3ceglkuwrcgy"]
+[gd_scene load_steps=8 format=3 uid="uid://b3ceglkuwrcgy"]
 
 [ext_resource type="Theme" uid="uid://kslgr1vu48c6" path="res://styles/main_menu/style_main_menu.tres" id="1_3dbro"]
 [ext_resource type="Script" uid="uid://bvu3wucuvgrbn" path="res://scripts/menus/main_menu_controls.gd" id="1_8chms"]
@@ -11,6 +11,43 @@ outline_color = Color(0.9490196, 0.85882354, 0.26666668, 1)
 shadow_size = 40
 shadow_color = Color(1, 1, 1, 0.15294118)
 shadow_offset = Vector2(0, 15)
+
+[sub_resource type="Animation" id="Animation_bfmg7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [100]
+}
+
+[sub_resource type="Animation" id="Animation_3dbro"]
+resource_name = "game_title_animation"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [100, 75]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_opfvd"]
+_data = {
+&"RESET": SubResource("Animation_bfmg7"),
+&"game_title_animation": SubResource("Animation_3dbro")
+}
 
 [node name="MainMenuControls" type="Control"]
 layout_mode = 3
@@ -83,6 +120,14 @@ text = "Highscores"
 layout_mode = 2
 size_flags_vertical = 4
 text = "Quit Game"
+
+[node name="GameTitleAnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Game_Title")
+libraries = {
+&"": SubResource("AnimationLibrary_opfvd")
+}
+speed_scale = 1.071
+movie_quit_on_finish = true
 
 [connection signal="pressed" from="VBoxContainer/Btn_Start" to="." method="_on_btn_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Btn_Start" to="VBoxContainer/Btn_Start" method="_on_pressed"]

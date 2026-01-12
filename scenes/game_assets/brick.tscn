@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://boconio2cthqd"]
+[gd_scene load_steps=5 format=3 uid="uid://boconio2cthqd"]
 
 [ext_resource type="Script" uid="uid://1lrrhxhkevl3" path="res://scripts/game_assets/brick.gd" id="1_0fgdg"]
+[ext_resource type="AudioStream" uid="uid://px4l2pwn0xv2" path="res://assets/sounds/8-bit-explosion-11-340459.mp3" id="2_ug28i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jurt7"]
 size = Vector2(64, 16)
@@ -42,3 +43,8 @@ seed = 134888256
 fixed_fps = 10
 fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_0fgdg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ug28i")
+volume_db = -6.619
+pitch_scale = 0.45
