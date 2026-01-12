@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://vo133m8mdrx4"]
+[gd_scene load_steps=4 format=3 uid="uid://vo133m8mdrx4"]
 
 [ext_resource type="Script" uid="uid://d0d0gi2rp30cl" path="res://scripts/game_assets/ball.gd" id="1_7s4qf"]
+[ext_resource type="AudioStream" uid="uid://px4l2pwn0xv2" path="res://assets/sounds/8-bit-explosion-11-340459.mp3" id="2_u58ax"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yvfo8"]
 particle_flag_disable_z = true
@@ -30,5 +31,10 @@ polygon = PackedVector2Array(-13, -13, 13, -13, 13, 13, -13, 13)
 
 [node name="SpeedUpTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_u58ax")
+volume_db = -6.73
+pitch_scale = 2.0
 
 [connection signal="ball_collision" from="." to="." method="_on_ball_collision"]

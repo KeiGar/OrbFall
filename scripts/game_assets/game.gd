@@ -7,6 +7,7 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $PostEffects/AnimationPlayer
 @onready var camera: Camera2D = $Camera2D
 @onready var hud_game_controls: Control = $HUDGameControls
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 signal game_start
@@ -106,6 +107,7 @@ func _on_game_over_screen_btn_restart_pressed() -> void:
 
 func _on_level_scenes_game_over() -> void:
 	revertTime()
+	audio_stream_player.play(0.1)
 	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
 	game_over_screen.visible = true
 	gameEnded = true

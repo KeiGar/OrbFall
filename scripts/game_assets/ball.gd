@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var max_speed: float = 700.0
 @export var time_to_max_speed: float = 120.0
 @onready var speed_up_timer: Timer = $SpeedUpTimer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 signal ball_collision(collider: Node)
 const MAX_BOUNCES_PER_FRAME := 1
@@ -56,6 +57,7 @@ func collideWithBody(hit: KinematicCollision2D) -> Vector2:
 	return rem
 	
 func collideWithPlayer(hit: KinematicCollision2D) -> Vector2:
+	audio_stream_player.play(0.27)
 	var collider = hit.get_collider()
 	var player: Node2D = collider if collider is Node2D else null
 	var hit_pos = position.x
