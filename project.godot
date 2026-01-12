@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="BreakoutClone"
+config/name="OrbFall"
 run/main_scene="uid://b3ceglkuwrcgy"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
