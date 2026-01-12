@@ -87,7 +87,7 @@ offset_right = 500.0
 offset_bottom = 215.0
 grow_horizontal = 2
 size_flags_horizontal = 4
-text = "BREAKCLONE"
+text = "ORBFALL"
 label_settings = SubResource("LabelSettings_8chms")
 horizontal_alignment = 1
 
