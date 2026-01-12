@@ -4,6 +4,19 @@ OrbFall is a fast-paced arcade game inspired by "Breakout". Control your paddle,
 
 ---
 
+## Controls
+
+| Key        | Action        |
+|------------|---------------|
+| **A**      | Move Left     |
+| **D**      | Move Right    |
+| **Shift**  | Slow Time     |
+| **F1**     | Show Controls |
+| **F4**     | Quit Game     |
+| **ESC**    | Pause         |
+
+---
+
 ## Features
 
 **Fast, explosive gameplay**  
