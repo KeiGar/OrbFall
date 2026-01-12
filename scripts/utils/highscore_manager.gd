@@ -18,6 +18,7 @@ class HighscoreFileHandler extends Node:
 		Highscores = readHighscoreData()
 		
 	func readHighscoreData() -> Array:
+		var result: Array[HighscoreData] = []
 		if FileAccess.file_exists(PATH_HIGHSCORE_SAVEFILE):
 			var file = FileAccess.open(PATH_HIGHSCORE_SAVEFILE, FileAccess.READ)
 			if file:
@@ -25,7 +26,6 @@ class HighscoreFileHandler extends Node:
 				file.close()
 				var parsed = JSON.parse_string(content)
 				if typeof(parsed) == TYPE_ARRAY:
-					var result: Array[HighscoreData] = []
 					for entry in parsed:
 						if typeof(entry) == TYPE_DICTIONARY:
 							var player_name = entry.get(HighscoreData.KEY_PLAYER_NAME, "")
@@ -39,7 +39,7 @@ class HighscoreFileHandler extends Node:
 				print("Error opening highscore save file.")
 		else:
 			print("Highscore save file not found.")
-		return []
+		return result
 		
 	func saveHighscoreData() -> void:
 		var data_to_save: Array = []
