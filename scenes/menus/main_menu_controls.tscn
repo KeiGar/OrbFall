@@ -94,28 +94,28 @@ horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=134901587]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = 21.5
-offset_right = 400.0
-offset_bottom = 286.5
+offset_left = -200.0
+offset_top = 39.5
+offset_right = 200.0
+offset_bottom = 304.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 40
 
 [node name="Btn_Start" type="Button" parent="VBoxContainer" unique_id=1453963222]
 layout_mode = 2
 size_flags_vertical = 4
-text = "Game Start"
+text = "START"
 
 [node name="Btn_Highscores" type="Button" parent="VBoxContainer" unique_id=981108299]
 layout_mode = 2
 size_flags_vertical = 4
-text = "Highscores"
+text = "HIGHSCORE"
 
 [node name="MuteButton" parent="VBoxContainer" unique_id=1529709918 instance=ExtResource("4_bfmg7")]
 layout_mode = 2
