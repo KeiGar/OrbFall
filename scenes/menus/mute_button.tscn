@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bv40xbu0h8vjg"]
+
+[ext_resource type="Texture2D" uid="uid://bqqdaokqnqe1c" path="res://assets/icons/speaker_unmute.png" id="1_5iiri"]
+[ext_resource type="Texture2D" uid="uid://dgkc5ulm7burk" path="res://assets/icons/speaker_mute.png" id="1_rxt6g"]
+[ext_resource type="Script" uid="uid://befhr41uxjo5j" path="res://scripts/menus/mute_button.gd" id="1_wumwf"]
+
+[node name="MuteButton" type="Control" unique_id=1529709918]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wumwf")
+
+[node name="BTN_Mute" type="TextureButton" parent="." unique_id=1299198992]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+pivot_offset = Vector2(32, 32)
+texture_normal = ExtResource("1_5iiri")
+
+[node name="BTN_Unmute" type="TextureButton" parent="." unique_id=1737695894]
+visible = false
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+pivot_offset = Vector2(32, 32)
+texture_normal = ExtResource("1_rxt6g")
+
+[connection signal="pressed" from="BTN_Mute" to="." method="_on_btn_pressed"]
+[connection signal="pressed" from="BTN_Unmute" to="." method="_on_btn_pressed"]
