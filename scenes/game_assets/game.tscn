@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dld6rt8cylm2"]
+[gd_scene format=3 uid="uid://dld6rt8cylm2"]
 
 [ext_resource type="Script" uid="uid://d1b7odoxshqad" path="res://scripts/game_assets/game.gd" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://ccm70s242m0kt" path="res://scripts/game_assets/game_timer.gd" id="2_iywne"]
@@ -89,38 +89,38 @@ _data = {
 &"camera_zoom_out": SubResource("Animation_po76p")
 }
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=1711768622]
 script = ExtResource("1_lbhrr")
 
-[node name="GameTimer" type="Node2D" parent="."]
+[node name="GameTimer" type="Node2D" parent="." unique_id=1060188164]
 script = ExtResource("2_iywne")
 
-[node name="Game_Start_Timer" type="Timer" parent="GameTimer"]
+[node name="Game_Start_Timer" type="Timer" parent="GameTimer" unique_id=296882935]
 wait_time = 3.0
 one_shot = true
 
-[node name="BoxContainer" type="BoxContainer" parent="GameTimer/Game_Start_Timer"]
+[node name="BoxContainer" type="BoxContainer" parent="GameTimer/Game_Start_Timer" unique_id=1044865038]
 offset_left = -544.0
 offset_top = -96.0
 offset_right = 546.0
 offset_bottom = 57.0
 alignment = 1
 
-[node name="TimerDisplay" type="Label" parent="GameTimer/Game_Start_Timer/BoxContainer"]
+[node name="TimerDisplay" type="Label" parent="GameTimer/Game_Start_Timer/BoxContainer" unique_id=963568416]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_p57ef")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = SubResource("GDScript_lbhrr")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=833206662]
 position = Vector2(0, -21)
 position_smoothing_enabled = true
 position_smoothing_speed = 25.0
 
-[node name="LevelScenes" parent="." instance=ExtResource("3_dqskq")]
+[node name="LevelScenes" parent="." unique_id=1546718921 instance=ExtResource("3_dqskq")]
 
-[node name="ScoreLabel" type="Label" parent="."]
+[node name="ScoreLabel" type="Label" parent="." unique_id=378867426]
 offset_left = -544.0
 offset_top = -465.0
 offset_bottom = -226.0
@@ -129,20 +129,20 @@ label_settings = SubResource("LabelSettings_dqskq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Menus" type="Node2D" parent="."]
+[node name="Menus" type="Node2D" parent="." unique_id=807262901]
 
-[node name="GameOverScreen" parent="Menus" instance=ExtResource("7_po76p")]
+[node name="GameOverScreen" parent="Menus" unique_id=1737879978 instance=ExtResource("7_po76p")]
 visible = false
 offset_top = -106.0
 offset_bottom = 106.0
 alignment = 1
 
-[node name="PauseMenu" parent="Menus" instance=ExtResource("7_u5sy4")]
+[node name="PauseMenu" parent="Menus" unique_id=628286846 instance=ExtResource("7_u5sy4")]
 visible = false
 
-[node name="PostEffects" type="Node2D" parent="."]
+[node name="PostEffects" type="Node2D" parent="." unique_id=1786637758]
 
-[node name="VigneteEffect" type="TextureRect" parent="PostEffects"]
+[node name="VigneteEffect" type="TextureRect" parent="PostEffects" unique_id=523853022]
 visible = false
 offset_left = -631.317
 offset_top = -523.0
@@ -151,13 +151,11 @@ offset_bottom = 533.0
 size_flags_horizontal = 4
 texture = SubResource("GradientTexture2D_t70e6")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PostEffects"]
-libraries = {
-&"": SubResource("AnimationLibrary_t70e6")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PostEffects" unique_id=983306347]
+libraries/ = SubResource("AnimationLibrary_t70e6")
 speed_scale = 3.874
 
-[node name="HUDGameControls" parent="." instance=ExtResource("7_t70e6")]
+[node name="HUDGameControls" parent="." unique_id=1004892717 instance=ExtResource("7_t70e6")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -168,7 +166,7 @@ grow_vertical = 1
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1936002160]
 stream = ExtResource("4_po76p")
 volume_db = -4.894
 pitch_scale = 0.25
@@ -176,8 +174,8 @@ pitch_scale = 0.25
 [connection signal="game_start" from="." to="GameTimer" method="_on_game_game_start"]
 [connection signal="pause" from="." to="Menus/PauseMenu" method="_on_game_pause"]
 [connection signal="unpause" from="." to="Menus/PauseMenu" method="_on_game_unpause"]
-[connection signal="timeout" from="GameTimer/Game_Start_Timer" to="." method="_on_game_start_timer_timeout"]
 [connection signal="timeout" from="GameTimer/Game_Start_Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="GameTimer/Game_Start_Timer" to="." method="_on_game_start_timer_timeout"]
 [connection signal="timeout" from="GameTimer/Game_Start_Timer" to="GameTimer" method="_on_game_start_timer_timeout"]
 [connection signal="game_over" from="LevelScenes" to="." method="_on_level_scenes_game_over"]
 [connection signal="increment_points" from="LevelScenes" to="." method="_on_level_scenes_increment_points"]

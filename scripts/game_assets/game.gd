@@ -47,8 +47,6 @@ func readUserInput_MenuControls() -> void:
 func readUserInput_GeneralControls() -> void:
 	if Input.is_action_just_released("toggle_hud"):
 		hud_game_controls.visible = not hud_game_controls.visible
-	if Input.is_action_pressed("quit_game"):
-		get_tree().quit(0)
 			
 func readUserInput_GameControls() -> void:
 	if Input.is_action_just_pressed("slow_down_time"):

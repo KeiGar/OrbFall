@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtjn82e0kob50"]
+[gd_scene format=3 uid="uid://dtjn82e0kob50"]
 
 [ext_resource type="FontFile" uid="uid://dfbrfi1pnqbms" path="res://styles/fonts/PublicPixel-rv0pA.ttf" id="1_2p3fb"]
 
@@ -39,7 +39,7 @@ Label/fonts/font = ExtResource("1_2p3fb")
 Label/styles/focus = SubResource("StyleBoxFlat_8im2c")
 Label/styles/normal = SubResource("StyleBoxEmpty_r5pdl")
 
-[node name="HUDGameControls" type="Control"]
+[node name="HUDGameControls" type="Control" unique_id=777158466]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,7 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_p6vpu")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1032501228]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -60,22 +60,22 @@ offset_top = -280.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="LBL_KEY_A" type="Label" parent="GridContainer"]
+[node name="LBL_KEY_A" type="Label" parent="GridContainer" unique_id=1814158869]
 layout_mode = 2
 text = "A - Move Left"
 horizontal_alignment = 3
 
-[node name="LBL_KEY_D" type="Label" parent="GridContainer"]
+[node name="LBL_KEY_D" type="Label" parent="GridContainer" unique_id=1570254523]
 layout_mode = 2
 text = "D - Move Right"
 horizontal_alignment = 3
 
-[node name="LBL_KEY_SHIFT" type="Label" parent="GridContainer"]
+[node name="LBL_KEY_SHIFT" type="Label" parent="GridContainer" unique_id=2044220237]
 layout_mode = 2
 text = "Shift - Slow Time"
 horizontal_alignment = 3
 
-[node name="GridContainer3" type="GridContainer" parent="."]
+[node name="GridContainer3" type="GridContainer" parent="." unique_id=988148556]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -85,17 +85,18 @@ offset_top = -280.0
 offset_right = 1125.0
 grow_vertical = 0
 
-[node name="LBL_KEY_F1" type="Label" parent="GridContainer3"]
+[node name="LBL_KEY_F1" type="Label" parent="GridContainer3" unique_id=67640884]
 layout_mode = 2
 text = "F1 -  Controls"
 horizontal_alignment = 3
 
-[node name="LBL_KEY_F4" type="Label" parent="GridContainer3"]
+[node name="LBL_KEY_F4" type="Label" parent="GridContainer3" unique_id=1865006358]
+visible = false
 layout_mode = 2
-text = "F4 - Quit"
+text = "F4 - Quit (unused)"
 horizontal_alignment = 3
 
-[node name="LBL_KEY_ESC" type="Label" parent="GridContainer3"]
+[node name="LBL_KEY_ESC" type="Label" parent="GridContainer3" unique_id=2023733470]
 layout_mode = 2
 text = "ESC - Pause"
 horizontal_alignment = 3

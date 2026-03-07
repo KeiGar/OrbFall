@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd0hrtf2laq6a"]
+[gd_scene format=3 uid="uid://cd0hrtf2laq6a"]
 
 [ext_resource type="Script" uid="uid://pi3ngqwfc1dh" path="res://scripts/menus/game_over_screen.gd" id="1_agkj2"]
 [ext_resource type="Theme" uid="uid://kslgr1vu48c6" path="res://styles/main_menu/style_main_menu.tres" id="1_bcvxg"]
@@ -12,7 +12,7 @@ shadow_size = 20
 shadow_color = Color(0, 0, 0, 0.49803922)
 shadow_offset = Vector2(0, 10)
 
-[node name="GameOverScreen" type="BoxContainer"]
+[node name="GameOverScreen" type="BoxContainer" unique_id=530189727]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -29,23 +29,23 @@ theme_override_constants/separation = 20
 vertical = true
 script = ExtResource("1_agkj2")
 
-[node name="GameOverLabel" type="Label" parent="."]
+[node name="GameOverLabel" type="Label" parent="." unique_id=859503570]
 layout_mode = 2
 text = "GAME OVER!"
 label_settings = SubResource("LabelSettings_u5sy4")
 horizontal_alignment = 1
 
-[node name="Btn_Restart" type="Button" parent="."]
+[node name="Btn_Restart" type="Button" parent="." unique_id=1908347887]
 layout_mode = 2
-text = "Restart"
+text = "RESTART"
 
-[node name="Btn_ViewHighscore" type="Button" parent="."]
+[node name="Btn_ViewHighscore" type="Button" parent="." unique_id=1277952562]
 layout_mode = 2
-text = "View Highscore"
+text = "VIEW HIGHSCORE"
 
-[node name="Btn_Quit" type="Button" parent="."]
+[node name="Btn_Quit" type="Button" parent="." unique_id=277020171]
 layout_mode = 2
-text = "Quit"
+text = "QUIT"
 
 [connection signal="pressed" from="Btn_Restart" to="." method="_on_btn_restart_pressed"]
 [connection signal="pressed" from="Btn_ViewHighscore" to="." method="_on_btn_view_highscore_pressed"]

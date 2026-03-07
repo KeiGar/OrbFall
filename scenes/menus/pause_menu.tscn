@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://epwevbbl7hwq"]
+[gd_scene format=3 uid="uid://epwevbbl7hwq"]
 
 [ext_resource type="Theme" uid="uid://kslgr1vu48c6" path="res://styles/main_menu/style_main_menu.tres" id="1_7unhi"]
 [ext_resource type="Script" uid="uid://cpwl38eou12wr" path="res://scripts/menus/pause_menu.gd" id="1_n87rw"]
+[ext_resource type="PackedScene" uid="uid://bv40xbu0h8vjg" path="res://scenes/menus/mute_button.tscn" id="3_gsnt3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uahpa"]
 font_size = 50
@@ -9,7 +10,7 @@ shadow_size = 2
 shadow_color = Color(0.70796657, 0.7079665, 0.7079665, 0.62352943)
 shadow_offset = Vector2(0, 5)
 
-[node name="PauseMenu" type="BoxContainer"]
+[node name="PauseMenu" type="BoxContainer" unique_id=1497372089]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -22,23 +23,27 @@ offset_bottom = 46.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_7unhi")
-theme_override_constants/separation = 30
+theme_override_constants/separation = 40
 alignment = 1
 vertical = true
 script = ExtResource("1_n87rw")
 
-[node name="LblPause" type="Label" parent="."]
+[node name="LblPause" type="Label" parent="." unique_id=607414855]
 layout_mode = 2
 text = "GAME PAUSED"
 label_settings = SubResource("LabelSettings_uahpa")
 
-[node name="BtnContinue" type="Button" parent="."]
+[node name="BtnContinue" type="Button" parent="." unique_id=977512037]
 layout_mode = 2
 text = "Continue"
 
-[node name="BtnQuit" type="Button" parent="."]
+[node name="BtnQuit" type="Button" parent="." unique_id=312441474]
 layout_mode = 2
 text = "Quit"
+
+[node name="MuteButton" parent="." unique_id=1529709918 instance=ExtResource("3_gsnt3")]
+layout_mode = 2
+size_flags_horizontal = 4
 
 [connection signal="pressed" from="BtnContinue" to="." method="_on_btn_continue_pressed"]
 [connection signal="pressed" from="BtnQuit" to="." method="_on_btn_quit_pressed"]
