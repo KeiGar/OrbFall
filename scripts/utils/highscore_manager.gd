@@ -11,7 +11,7 @@ class HighscoreData extends RefCounted:
 		self.Score = score
 
 class HighscoreFileHandler extends Node:
-	const PATH_HIGHSCORE_SAVEFILE: String = "user://highscores.json"
+	const PATH_HIGHSCORE_SAVEFILE: String = "res://storage/highscores.json"
 	var Highscores: Array[HighscoreData] = []
 	
 	func _init():
