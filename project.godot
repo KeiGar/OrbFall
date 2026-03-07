@@ -21,6 +21,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 [autoload]
 
 PlayerVariables="*res://scripts/globals/player_variables.gd"
+GlobalSettings="*uid://boovugufbvit3"
 
 [display]
 
