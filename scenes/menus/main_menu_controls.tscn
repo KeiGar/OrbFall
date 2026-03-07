@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3ceglkuwrcgy"]
+[gd_scene format=3 uid="uid://b3ceglkuwrcgy"]
 
 [ext_resource type="Theme" uid="uid://kslgr1vu48c6" path="res://styles/main_menu/style_main_menu.tres" id="1_3dbro"]
 [ext_resource type="Script" uid="uid://bvu3wucuvgrbn" path="res://scripts/menus/main_menu_controls.gd" id="1_8chms"]
@@ -49,7 +49,7 @@ _data = {
 &"game_title_animation": SubResource("Animation_3dbro")
 }
 
-[node name="MainMenuControls" type="Control"]
+[node name="MainMenuControls" type="Control" unique_id=1051970238]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,7 +67,7 @@ size_flags_vertical = 4
 theme = ExtResource("1_3dbro")
 script = ExtResource("1_8chms")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1612688934]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,7 +76,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_3dbro")
 
-[node name="Game_Title" type="Label" parent="."]
+[node name="Game_Title" type="Label" parent="." unique_id=1223095137]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -91,7 +91,7 @@ text = "ORBFALL"
 label_settings = SubResource("LabelSettings_8chms")
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=134901587]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -99,37 +99,29 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -400.0
-offset_top = 2.5
+offset_top = 21.5
 offset_right = 400.0
-offset_bottom = 267.5
+offset_bottom = 286.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
 
-[node name="Btn_Start" type="Button" parent="VBoxContainer"]
+[node name="Btn_Start" type="Button" parent="VBoxContainer" unique_id=1453963222]
 layout_mode = 2
 size_flags_vertical = 4
 text = "Game Start"
 
-[node name="Btn_Highscores" type="Button" parent="VBoxContainer"]
+[node name="Btn_Highscores" type="Button" parent="VBoxContainer" unique_id=981108299]
 layout_mode = 2
 size_flags_vertical = 4
 text = "Highscores"
 
-[node name="Btn_QuitGame" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-text = "Quit Game"
-
-[node name="GameTitleAnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="GameTitleAnimationPlayer" type="AnimationPlayer" parent="." unique_id=340685571]
 root_node = NodePath("../Game_Title")
-libraries = {
-&"": SubResource("AnimationLibrary_opfvd")
-}
+libraries/ = SubResource("AnimationLibrary_opfvd")
 speed_scale = 1.071
 movie_quit_on_finish = true
 
 [connection signal="pressed" from="VBoxContainer/Btn_Start" to="." method="_on_btn_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Btn_Start" to="VBoxContainer/Btn_Start" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/Btn_Highscores" to="." method="_on_btn_highscores_pressed"]
-[connection signal="pressed" from="VBoxContainer/Btn_QuitGame" to="." method="_on_btn_quit_game_pressed"]
