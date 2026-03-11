@@ -28,10 +28,7 @@ func _ready() -> void:
 	game_start.emit()
 	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
 	camera_original_pos = camera.position
-	
-	if DisplayServer.is_touchscreen_available():
-		mobile_controls_overlay.visible = true
-		hud_game_controls.visible = false
+	show_mobile_overlay(true)
 	
 func _process(delta: float) -> void:
 	readUserInput_GeneralControls()
@@ -79,15 +76,14 @@ func revertTime() -> void:
 func unpauseGame() -> void:
 	isGamePaused = false
 	level_scenes.process_mode = Node.PROCESS_MODE_ALWAYS
-	if DisplayServer.is_touchscreen_available():
-		mobile_controls_overlay.visible = true
+	show_mobile_overlay(true)
 	unpause.emit()
 	
 func pauseGame() -> void:
 	revertTime()
 	isGamePaused = true
 	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
-	mobile_controls_overlay.visible = false
+	show_mobile_overlay(false)
 	pause.emit()
 	
 func quitGame() -> void:
@@ -116,7 +112,7 @@ func _on_level_scenes_game_over() -> void:
 	audio_stream_player.play(0.1)
 	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
 	game_over_screen.visible = true
-	mobile_controls_overlay.visible = false
+	show_mobile_overlay(false)
 	gameEnded = true
 
 func _on_level_scenes_increment_points(incr: int) -> void:
@@ -126,3 +122,9 @@ func _on_level_scenes_increment_points(incr: int) -> void:
 func _on_game_over_screen_btn_view_highscore_pressed() -> void:
 	PlayerVariables.player_score = player_score
 	get_tree().change_scene_to_file("res://scenes/menus/highscore_saving_screen.tscn")
+	
+func show_mobile_overlay(visible: bool) -> void:
+	if DisplayServer.is_touchscreen_available():
+		mobile_controls_overlay.visible = visible
+		hud_game_controls.visible = false
+	

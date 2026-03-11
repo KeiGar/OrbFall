@@ -173,6 +173,7 @@ volume_db = -4.894
 pitch_scale = 0.25
 
 [node name="MobileControlsOverlay" parent="." unique_id=1354855609 instance=ExtResource("9_mq2qo")]
+visible = false
 offset_top = -49.0
 offset_bottom = -49.0
 
