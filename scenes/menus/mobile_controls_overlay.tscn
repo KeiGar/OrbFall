@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://c68xq7tcfqltt"]
 
+[ext_resource type="Script" uid="uid://uebun7y7cnc" path="res://scripts/menus/mobile_controls_overlay.gd" id="1_xo17a"]
+
 [node name="MobileControlsOverlay" type="Control" unique_id=1354855609]
 layout_mode = 3
 anchors_preset = 8
@@ -11,43 +13,61 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_xo17a")
 
-[node name="CenterContainer" type="HBoxContainer" parent="." unique_id=1431680227]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=461654803]
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -15.5
-offset_bottom = 15.5
+offset_left = -165.0
+offset_top = -72.5
+offset_right = 165.0
+offset_bottom = 72.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 200
+theme_override_constants/separation = 100
 
-[node name="BTN_LEFT_KEY" type="Button" parent="CenterContainer" unique_id=82528164]
+[node name="BTN_ESC_KEY" type="Button" parent="VBoxContainer" unique_id=1832321344]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+text = "Pause"
+
+[node name="ControlKeys" type="HBoxContainer" parent="VBoxContainer" unique_id=1431680227]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="BTN_LEFT_KEY" type="Button" parent="VBoxContainer/ControlKeys" unique_id=82528164]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 100
 text = "<"
 
-[node name="BTN_RIGHT_KEY" type="Button" parent="CenterContainer" unique_id=1252203731]
+[node name="BTN_RIGHT_KEY" type="Button" parent="VBoxContainer/ControlKeys" unique_id=1252203731]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 100
+action_mode = 0
 text = ">"
 
-[node name="BTN_SHIFT_KEY" type="Button" parent="." unique_id=950265210]
-layout_mode = 0
-offset_left = -221.5
-offset_top = -107.0
-offset_right = -176.5
-offset_bottom = -11.0
+[node name="BTN_SHIFT_KEY" type="Button" parent="VBoxContainer" unique_id=950265210]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+action_mode = 0
 text = "Slow"
 
-[node name="BTN_ESC_KEY" type="Button" parent="." unique_id=1832321344]
-layout_mode = 0
-offset_left = -172.5
-offset_top = -107.0
-offset_right = -117.5
-offset_bottom = -11.0
-text = "Pause"
+[connection signal="button_down" from="VBoxContainer/BTN_ESC_KEY" to="." method="_on_btn_button_down" binds= ["pause_game"]]
+[connection signal="button_up" from="VBoxContainer/BTN_ESC_KEY" to="." method="_on_btn_button_up" binds= ["pause_game"]]
+[connection signal="button_down" from="VBoxContainer/ControlKeys/BTN_LEFT_KEY" to="." method="_on_btn_button_down" binds= ["player_moveLeft"]]
+[connection signal="button_up" from="VBoxContainer/ControlKeys/BTN_LEFT_KEY" to="." method="_on_btn_button_up" binds= ["player_moveLeft"]]
+[connection signal="button_down" from="VBoxContainer/ControlKeys/BTN_RIGHT_KEY" to="." method="_on_btn_button_down" binds= ["player_moveRight"]]
+[connection signal="button_up" from="VBoxContainer/ControlKeys/BTN_RIGHT_KEY" to="." method="_on_btn_button_up" binds= ["player_moveRight"]]
+[connection signal="button_down" from="VBoxContainer/BTN_SHIFT_KEY" to="." method="_on_btn_button_down" binds= ["slow_down_time"]]
+[connection signal="button_up" from="VBoxContainer/BTN_SHIFT_KEY" to="." method="_on_btn_button_up" binds= ["slow_down_time"]]
