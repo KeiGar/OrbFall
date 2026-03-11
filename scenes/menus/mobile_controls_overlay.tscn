@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c68xq7tcfqltt"]
 
 [ext_resource type="Script" uid="uid://uebun7y7cnc" path="res://scripts/menus/mobile_controls_overlay.gd" id="1_xo17a"]
+[ext_resource type="Theme" uid="uid://chjv4rmjebb10" path="res://styles/hud/mobile_hud_style.tres" id="2_1krk4"]
 
 [node name="MobileControlsOverlay" type="Control" unique_id=1354855609]
 layout_mode = 3
@@ -20,12 +21,12 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -474.5
+offset_left = -562.5
 offset_top = -349.0
-offset_right = 474.5
+offset_right = 562.5
 offset_bottom = 646.0
 grow_horizontal = 2
-theme_override_constants/separation = 300
+theme_override_constants/separation = 100
 
 [node name="BTN_ESC_KEY" type="Button" parent="VBoxContainer" unique_id=1832321344]
 layout_mode = 2
@@ -36,20 +37,22 @@ text = "Pause"
 
 [node name="ControlKeys" type="HBoxContainer" parent="VBoxContainer" unique_id=1431680227]
 layout_mode = 2
-theme_override_constants/separation = 200
+theme_override_constants/separation = 20
 
 [node name="BTN_LEFT_KEY" type="Button" parent="VBoxContainer/ControlKeys" unique_id=82528164]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 100
+theme = ExtResource("2_1krk4")
+theme_override_font_sizes/font_size = 500
 text = "<"
 
 [node name="BTN_RIGHT_KEY" type="Button" parent="VBoxContainer/ControlKeys" unique_id=1252203731]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 100
+theme = ExtResource("2_1krk4")
+theme_override_font_sizes/font_size = 500
 action_mode = 0
 text = ">"
 

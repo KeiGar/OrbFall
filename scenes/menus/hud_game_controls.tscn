@@ -2,6 +2,9 @@
 
 [ext_resource type="FontFile" uid="uid://dfbrfi1pnqbms" path="res://styles/fonts/PublicPixel-rv0pA.ttf" id="1_2p3fb"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2p3fb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8im2c"]
 content_margin_left = 4.0
 content_margin_top = 4.0
@@ -26,6 +29,7 @@ expand_margin_bottom = 2.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r5pdl"]
 
 [sub_resource type="Theme" id="Theme_p6vpu"]
+Button/styles/normal = SubResource("StyleBoxFlat_2p3fb")
 Label/colors/font_color = Color(1, 1, 1, 0.69411767)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
