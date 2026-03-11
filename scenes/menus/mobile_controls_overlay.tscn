@@ -17,18 +17,15 @@ script = ExtResource("1_xo17a")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=461654803]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -165.0
-offset_top = -72.5
-offset_right = 165.0
-offset_bottom = 72.5
+offset_left = -474.5
+offset_top = -349.0
+offset_right = 474.5
+offset_bottom = 646.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 100
+theme_override_constants/separation = 300
 
 [node name="BTN_ESC_KEY" type="Button" parent="VBoxContainer" unique_id=1832321344]
 layout_mode = 2
@@ -43,20 +40,21 @@ theme_override_constants/separation = 200
 
 [node name="BTN_LEFT_KEY" type="Button" parent="VBoxContainer/ControlKeys" unique_id=82528164]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 100
 text = "<"
 
 [node name="BTN_RIGHT_KEY" type="Button" parent="VBoxContainer/ControlKeys" unique_id=1252203731]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 100
 action_mode = 0
 text = ">"
 
 [node name="BTN_SHIFT_KEY" type="Button" parent="VBoxContainer" unique_id=950265210]
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 50
