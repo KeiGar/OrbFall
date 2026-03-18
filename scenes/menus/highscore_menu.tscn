@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dymimjcrkx72l"]
+[gd_scene format=3 uid="uid://dymimjcrkx72l"]
 
 [ext_resource type="Script" uid="uid://d4b10t5ymxudx" path="res://scripts/menus/highscore_menu.gd" id="1_3pnpd"]
 [ext_resource type="Theme" uid="uid://kslgr1vu48c6" path="res://styles/main_menu/style_main_menu.tres" id="1_haig6"]
@@ -15,7 +15,7 @@ Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 30
 
-[node name="HighscoreMenu" type="Control"]
+[node name="HighscoreMenu" type="Control" unique_id=1109093266]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -33,7 +33,7 @@ size_flags_vertical = 4
 theme = ExtResource("1_haig6")
 script = ExtResource("1_3pnpd")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=633359230]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,7 +44,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2022038827]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,12 +59,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1101133879]
 layout_mode = 2
 text = "HIGHSCORE"
 horizontal_alignment = 1
 
-[node name="HighscoreTable" type="GridContainer" parent="VBoxContainer"]
+[node name="HighscoreTable" type="GridContainer" parent="VBoxContainer" unique_id=770424240]
 layout_mode = 2
 size_flags_stretch_ratio = 1.05
 theme = SubResource("Theme_haig6")
@@ -72,13 +72,13 @@ theme_override_constants/h_separation = 200
 theme_override_constants/v_separation = 2
 columns = 3
 
-[node name="Btn_Return" type="Button" parent="VBoxContainer"]
+[node name="Btn_Return" type="Button" parent="VBoxContainer" unique_id=1081106570]
 layout_mode = 2
-text = "Return"
+text = "RETURN"
 
-[node name="Btn_Delete" type="Button" parent="VBoxContainer"]
+[node name="Btn_Delete" type="Button" parent="VBoxContainer" unique_id=265517146]
 layout_mode = 2
-text = "Delete All Data"
+text = "DELETE DATA"
 
 [connection signal="pressed" from="VBoxContainer/Btn_Return" to="." method="_on_btn_return_pressed"]
 [connection signal="pressed" from="VBoxContainer/Btn_Delete" to="." method="_on_btn_delete_pressed"]

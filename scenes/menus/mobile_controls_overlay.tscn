@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://c68xq7tcfqltt"]
+
+[ext_resource type="Script" uid="uid://uebun7y7cnc" path="res://scripts/menus/mobile_controls_overlay.gd" id="1_xo17a"]
+[ext_resource type="Theme" uid="uid://chjv4rmjebb10" path="res://styles/hud/mobile_hud_style.tres" id="2_1krk4"]
+[ext_resource type="Texture2D" uid="uid://cgrgnj7un467" path="res://assets/icons/pause_button.png" id="2_sjg1o"]
+
+[node name="MobileControlsOverlay" type="Control" unique_id=1354855609]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_xo17a")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=461654803]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -562.5
+offset_top = -349.0
+offset_right = 562.5
+offset_bottom = 646.0
+grow_horizontal = 2
+theme_override_constants/separation = 50
+
+[node name="BTN_ESC_KEY" type="TextureButton" parent="VBoxContainer" unique_id=1600510952]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("2_sjg1o")
+
+[node name="ControlKeys" type="HBoxContainer" parent="VBoxContainer" unique_id=1431680227]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="BTN_LEFT_KEY" type="Button" parent="VBoxContainer/ControlKeys" unique_id=82528164]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("2_1krk4")
+theme_override_font_sizes/font_size = 500
+text = "<"
+
+[node name="BTN_RIGHT_KEY" type="Button" parent="VBoxContainer/ControlKeys" unique_id=1252203731]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("2_1krk4")
+theme_override_font_sizes/font_size = 500
+action_mode = 0
+text = ">"
+
+[node name="BTN_SHIFT_KEY" type="Button" parent="VBoxContainer" unique_id=950265210]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+action_mode = 0
+text = "Slow"
+
+[connection signal="button_down" from="VBoxContainer/BTN_ESC_KEY" to="." method="_on_btn_button_down" binds= ["pause_game"]]
+[connection signal="button_up" from="VBoxContainer/BTN_ESC_KEY" to="." method="_on_btn_button_up" binds= ["pause_game"]]
+[connection signal="button_down" from="VBoxContainer/ControlKeys/BTN_LEFT_KEY" to="." method="_on_btn_button_down" binds= ["player_moveLeft"]]
+[connection signal="button_up" from="VBoxContainer/ControlKeys/BTN_LEFT_KEY" to="." method="_on_btn_button_up" binds= ["player_moveLeft"]]
+[connection signal="button_down" from="VBoxContainer/ControlKeys/BTN_RIGHT_KEY" to="." method="_on_btn_button_down" binds= ["player_moveRight"]]
+[connection signal="button_up" from="VBoxContainer/ControlKeys/BTN_RIGHT_KEY" to="." method="_on_btn_button_up" binds= ["player_moveRight"]]
+[connection signal="button_down" from="VBoxContainer/BTN_SHIFT_KEY" to="." method="_on_btn_button_down" binds= ["slow_down_time"]]
+[connection signal="button_up" from="VBoxContainer/BTN_SHIFT_KEY" to="." method="_on_btn_button_up" binds= ["slow_down_time"]]
