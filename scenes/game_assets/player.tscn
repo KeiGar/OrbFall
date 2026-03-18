@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgbrr5h7c8mmi"]
+[gd_scene format=3 uid="uid://bgbrr5h7c8mmi"]
 
 [ext_resource type="Script" uid="uid://dufbq4v7r4g07" path="res://scripts/game_assets/player.gd" id="1_3vyb7"]
 
@@ -20,19 +20,19 @@ color = Color(0.8784314, 0.8784314, 0.8784314, 0.3372549)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hdu5b"]
 size = Vector2(200, 50)
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1049731654 groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_3vyb7")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=145294451]
 amount = 3
 texture = SubResource("GradientTexture2D_y6ucf")
 lifetime = 0.05
 process_material = SubResource("ParticleProcessMaterial_hdu5b")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=305391060]
 shape = SubResource("RectangleShape2D_hdu5b")
 
-[node name="PaddleShape" type="Polygon2D" parent="."]
+[node name="PaddleShape" type="Polygon2D" parent="." unique_id=123730576]
 color = Color(0.15, 0.773333, 1, 1)
 polygon = PackedVector2Array(-100, -25, 100, -25, 100, 25, -100, 25)

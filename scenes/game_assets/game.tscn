@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cd0hrtf2laq6a" path="res://scenes/menus/game_over_screen.tscn" id="7_po76p"]
 [ext_resource type="PackedScene" uid="uid://dtjn82e0kob50" path="res://scenes/menus/hud_game_controls.tscn" id="7_t70e6"]
 [ext_resource type="PackedScene" uid="uid://epwevbbl7hwq" path="res://scenes/menus/pause_menu.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://c68xq7tcfqltt" path="res://scenes/menus/mobile_controls_overlay.tscn" id="9_mq2qo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p57ef"]
 font = ExtResource("2_pc6uq")
@@ -170,6 +171,11 @@ size_flags_vertical = 8
 stream = ExtResource("4_po76p")
 volume_db = -4.894
 pitch_scale = 0.25
+
+[node name="MobileControlsOverlay" parent="." unique_id=1354855609 instance=ExtResource("9_mq2qo")]
+visible = false
+offset_top = -18.0
+offset_bottom = -18.0
 
 [connection signal="game_start" from="." to="GameTimer" method="_on_game_game_start"]
 [connection signal="pause" from="." to="Menus/PauseMenu" method="_on_game_pause"]
