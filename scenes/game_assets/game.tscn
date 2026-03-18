@@ -174,8 +174,8 @@ pitch_scale = 0.25
 
 [node name="MobileControlsOverlay" parent="." unique_id=1354855609 instance=ExtResource("9_mq2qo")]
 visible = false
-offset_top = -49.0
-offset_bottom = -49.0
+offset_top = -18.0
+offset_bottom = -18.0
 
 [connection signal="game_start" from="." to="GameTimer" method="_on_game_game_start"]
 [connection signal="pause" from="." to="Menus/PauseMenu" method="_on_game_pause"]
