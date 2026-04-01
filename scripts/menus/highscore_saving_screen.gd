@@ -15,8 +15,10 @@ func _ready() -> void:
 	lbl_score.text = "%d" % player_score
 	
 func _on_save_button_pressed() -> void:
-	fileHandler.addHighScoreData(player_name, player_score)
-	fileHandler.saveHighscoreData()
+	# fileHandler.addHighScoreData(player_name, player_score)
+	# fileHandler.saveHighscoreData()
+	HighscoreManagerAPI.upload_highscore(player_name, player_score)
+	HighscoreManagerAPI.fetch_highscore()
 	PlayerVariables.player_name = player_name
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu_controls.tscn")
 
