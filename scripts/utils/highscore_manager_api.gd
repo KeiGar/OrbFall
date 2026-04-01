@@ -65,7 +65,8 @@ func _on_request_completed(result: int, response_code: int, _headers: PackedStri
 	elif json_data.has("message"):
 		# This is a POST response (from our Lambda 'save_highscore' return)
 		print("Server says: ", json_data["message"])
-		emit_signal("score_upload_success")
+		fetch_highscore()
+		# emit_signal("score_upload_success")
 
 func _print_scores(scores: Array):
 	print("--- CURRENT LEADERBOARD ---")
