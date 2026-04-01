@@ -22,6 +22,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 PlayerVariables="*res://scripts/globals/player_variables.gd"
 GlobalSettings="*uid://boovugufbvit3"
+HighscoreManagerAPI="*uid://2wnebqednw0h"
 
 [display]
 
