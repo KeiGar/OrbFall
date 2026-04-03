@@ -37,7 +37,11 @@ func fetch_highscore() -> void:
 	http_request.request_completed.connect(_on_request_completed)
 	add_child(http_request)
 	print("Fetching top scores...")
-	var headers = ["Content-Type: application/json"]
+	var hmac_str = CLIENT_KEY.sha256_text()
+	var headers = [
+		"Content-Type: application/json",
+		"x-orbfall-hmac: " + hmac_str
+		]
 	var error = http_request.request(BASE_URL, headers, HTTPClient.METHOD_GET)
 	if error != OK:
 		push_error("An error occurred while attempting to fetch the score from the database.")
