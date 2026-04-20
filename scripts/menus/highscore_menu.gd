@@ -5,8 +5,9 @@ var fileHandler = HighscoreManager.HighscoreFileHandler.new()
 var Highscores: Array[HighscoreManager.HighscoreData] = []
 
 func _ready() -> void:
-	Highscores = fileHandler.Highscores
-	Highscores.sort_custom(func(a: HighscoreManager.HighscoreData,b: HighscoreManager.HighscoreData): return a.Score > b.Score)
+	# Highscores = fileHandler.Highscores
+	# Highscores.sort_custom(func(a: HighscoreManager.HighscoreData,b: HighscoreManager.HighscoreData): return a.Score > b.Score)
+	Highscores = HighscoreManagerAPI.Highscores_Received
 	displayHighscoreData()
 	
 func displayHighscoreData() -> void:

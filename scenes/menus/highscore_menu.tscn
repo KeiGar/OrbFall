@@ -77,6 +77,7 @@ layout_mode = 2
 text = "RETURN"
 
 [node name="Btn_Delete" type="Button" parent="VBoxContainer" unique_id=265517146]
+visible = false
 layout_mode = 2
 text = "DELETE DATA"
 

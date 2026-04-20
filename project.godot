@@ -17,17 +17,22 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="OrbFall"
 run/main_scene="uid://b3ceglkuwrcgy"
 config/features=PackedStringArray("4.6", "Forward Plus")
+config/icon="uid://dy5oeu5asr2l1"
 
 [autoload]
 
 PlayerVariables="*res://scripts/globals/player_variables.gd"
 GlobalSettings="*uid://boovugufbvit3"
+HighscoreManagerAPI="*uid://2wnebqednw0h"
 
 [display]
 
 window/size/viewport_width=1125
 window/size/viewport_height=1000
+window/size/mode=3
 window/size/resizable=false
+window/stretch/mode="viewport"
+window/handheld/orientation=1
 
 [input]
 
