@@ -25,7 +25,7 @@ offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_bcvxg")
-theme_override_constants/separation = 20
+theme_override_constants/separation = 100
 vertical = true
 script = ExtResource("1_agkj2")
 

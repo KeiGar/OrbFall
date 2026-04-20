@@ -105,16 +105,18 @@ offset_right = 200.0
 offset_bottom = 304.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 80
 
 [node name="Btn_Start" type="Button" parent="VBoxContainer" unique_id=1453963222]
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
 text = "START"
 
 [node name="Btn_Highscores" type="Button" parent="VBoxContainer" unique_id=981108299]
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
 text = "HIGHSCORE"
 
 [node name="MuteButton" parent="VBoxContainer" unique_id=1529709918 instance=ExtResource("4_bfmg7")]
