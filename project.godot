@@ -17,8 +17,8 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="OrbFall"
 run/main_scene="uid://b3ceglkuwrcgy"
 config/features=PackedStringArray("4.6", "Forward Plus")
-run/max_fps=30
 config/icon="uid://dy5oeu5asr2l1"
+run/stretch/aspect="keep_width"
 
 [autoload]
 

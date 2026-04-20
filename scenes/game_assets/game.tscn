@@ -130,17 +130,6 @@ label_settings = SubResource("LabelSettings_dqskq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Menus" type="Node2D" parent="." unique_id=807262901]
-
-[node name="GameOverScreen" parent="Menus" unique_id=1737879978 instance=ExtResource("7_po76p")]
-visible = false
-offset_top = -106.0
-offset_bottom = 106.0
-alignment = 1
-
-[node name="PauseMenu" parent="Menus" unique_id=628286846 instance=ExtResource("7_u5sy4")]
-visible = false
-
 [node name="PostEffects" type="Node2D" parent="." unique_id=1786637758]
 
 [node name="VigneteEffect" type="TextureRect" parent="PostEffects" unique_id=523853022]
@@ -177,11 +166,22 @@ visible = false
 offset_top = -18.0
 offset_bottom = -18.0
 
+[node name="Menus" type="Node2D" parent="." unique_id=807262901]
+
+[node name="GameOverScreen" parent="Menus" unique_id=1737879978 instance=ExtResource("7_po76p")]
+visible = false
+offset_top = -106.0
+offset_bottom = 106.0
+alignment = 1
+
+[node name="PauseMenu" parent="Menus" unique_id=628286846 instance=ExtResource("7_u5sy4")]
+visible = false
+
 [connection signal="game_start" from="." to="GameTimer" method="_on_game_game_start"]
 [connection signal="pause" from="." to="Menus/PauseMenu" method="_on_game_pause"]
 [connection signal="unpause" from="." to="Menus/PauseMenu" method="_on_game_unpause"]
-[connection signal="timeout" from="GameTimer/Game_Start_Timer" to="." method="_on_game_start_timer_timeout"]
 [connection signal="timeout" from="GameTimer/Game_Start_Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="GameTimer/Game_Start_Timer" to="." method="_on_game_start_timer_timeout"]
 [connection signal="timeout" from="GameTimer/Game_Start_Timer" to="GameTimer" method="_on_game_start_timer_timeout"]
 [connection signal="game_over" from="LevelScenes" to="." method="_on_level_scenes_game_over"]
 [connection signal="increment_points" from="LevelScenes" to="." method="_on_level_scenes_increment_points"]
