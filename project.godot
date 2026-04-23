@@ -23,6 +23,7 @@ run/stretch/aspect="keep_width"
 
 [autoload]
 
+GameUtils="*uid://df1eojxu4nt1i"
 PlayerVariables="*res://scripts/globals/player_variables.gd"
 GlobalSettings="*uid://boovugufbvit3"
 HighscoreManagerAPI="*uid://2wnebqednw0h"
