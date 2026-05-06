@@ -28,7 +28,7 @@ func _ready() -> void:
 	game_start.emit()
 	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
 	camera_original_pos = camera.position
-	show_mobile_overlay(true)
+	show_mobile_overlay(DisplayServer.is_touchscreen_available())
 	
 func _process(delta: float) -> void:
 	readUserInput_GeneralControls()
@@ -124,7 +124,6 @@ func _on_game_over_screen_btn_view_highscore_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/menus/highscore_saving_screen.tscn")
 	
 func show_mobile_overlay(visible: bool) -> void:
-	if DisplayServer.is_touchscreen_available():
-		mobile_controls_overlay.visible = visible
-		hud_game_controls.visible = false
+	mobile_controls_overlay.visible = visible
+	hud_game_controls.visible = !visible
 	
