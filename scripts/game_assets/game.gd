@@ -3,7 +3,6 @@ extends Node2D
 @onready var game_timer: Node2D = $GameTimer
 @onready var game_over_screen: BoxContainer = $Menus/GameOverScreen
 @onready var score_label: Label = $ScoreLabel
-@onready var vignete_effect: TextureRect = $PostEffects/VigneteEffect
 @onready var animation_player: AnimationPlayer = $PostEffects/AnimationPlayer
 @onready var camera: Camera2D = $Camera2D
 @onready var hud_game_controls: Control = $HUDGameControls
@@ -26,7 +25,10 @@ func _ready() -> void:
 	game_over_screen.visible = false
 	startGameTimerRunning = true
 	game_start.emit()
+	
+	# TODO: pause scene without disabling whole scene, so that level scene nodes can be fully instantiated
 	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
+	
 	camera_original_pos = camera.position
 	show_mobile_overlay(DisplayServer.is_touchscreen_available())
 	
@@ -61,13 +63,11 @@ func slowTime() -> void:
 		Engine.set_time_scale(0.35)
 		camera.position = level_scenes.get_ball_position()
 		animation_player.play("camera_zoom_animation")
-		#vignete_effect.visible = true
 		is_time_slowed_down = true
 		
 func revertTime() -> void:
 	if is_time_slowed_down:
 		Engine.set_time_scale(1.0)
-		#vignete_effect.visible = false
 		camera.position = camera_original_pos
 		is_time_slowed_down = false
 		animation_player.play("camera_zoom_out")
