@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var max_speed: float = 700.0
+@export var min_speed: float = 300.0
 @export var time_to_max_speed: float = 120.0
 @onready var speed_up_timer: Timer = $SpeedUpTimer
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
@@ -19,7 +20,7 @@ func _ready() -> void:
 
 # Called every frame. 'dt' is the elapsed time since the previous frame.
 func _physics_process(dt: float) -> void:
-	speed = max_speed * ((time_to_max_speed - speed_up_timer.time_left) / time_to_max_speed) + 300.0
+	speed = max_speed * ((time_to_max_speed - speed_up_timer.time_left) / time_to_max_speed) + min_speed
 	velocity = dir * speed
 	var remainder := velocity * dt
 	
