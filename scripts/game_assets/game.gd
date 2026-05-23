@@ -20,6 +20,7 @@ var startGameTimerRunning = false
 var player_score := 0
 var camera_original_pos: Vector2
 var is_time_slowed_down = false
+var is_mobile := DisplayServer.is_touchscreen_available()
 
 func _ready() -> void:
 	game_over_screen.visible = false
@@ -27,10 +28,13 @@ func _ready() -> void:
 	game_start.emit()
 	
 	# TODO: pause scene without disabling whole scene, so that level scene nodes can be fully instantiated
-	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
-	
+	# level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
+
+	set_process_modes()
+	get_tree().paused = true
+
 	camera_original_pos = camera.position
-	show_mobile_overlay(DisplayServer.is_touchscreen_available())
+	show_mobile_overlay(is_mobile)
 	
 func _process(delta: float) -> void:
 	readUserInput_GeneralControls()
@@ -75,23 +79,26 @@ func revertTime() -> void:
 			
 func unpauseGame() -> void:
 	isGamePaused = false
-	level_scenes.process_mode = Node.PROCESS_MODE_ALWAYS
-	show_mobile_overlay(true)
+	get_tree().paused = isGamePaused
+	show_mobile_overlay(is_mobile)
 	unpause.emit()
+	print("Game unpaused!")
 	
 func pauseGame() -> void:
 	revertTime()
 	isGamePaused = true
-	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
+	get_tree().paused = isGamePaused
 	show_mobile_overlay(false)
 	pause.emit()
+	print("Game paused!")
+
 	
 func quitGame() -> void:
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu_controls.tscn")
 
 func _on_game_start_timer_timeout() -> void:
 	startGameTimerRunning = false
-	level_scenes.process_mode = Node.PROCESS_MODE_ALWAYS
+	unpauseGame()
 	game_timer.queue_free()
 
 func _on_pause_menu_btn_quit_pressed() -> void:
@@ -110,7 +117,7 @@ func _on_game_over_screen_btn_restart_pressed() -> void:
 func _on_level_scenes_game_over() -> void:
 	revertTime()
 	audio_stream_player.play(0.1)
-	level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
+	get_tree().paused = true
 	game_over_screen.visible = true
 	show_mobile_overlay(false)
 	gameEnded = true
@@ -123,7 +130,10 @@ func _on_game_over_screen_btn_view_highscore_pressed() -> void:
 	PlayerVariables.player_score = player_score
 	get_tree().change_scene_to_file("res://scenes/menus/highscore_saving_screen.tscn")
 	
-func show_mobile_overlay(visible: bool) -> void:
-	mobile_controls_overlay.visible = visible
-	hud_game_controls.visible = !visible
+func show_mobile_overlay(make_visible: bool) -> void:
+	mobile_controls_overlay.visible = make_visible
+	hud_game_controls.visible = !make_visible
 	
+func set_process_modes() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	level_scenes.process_mode = Node.PROCESS_MODE_PAUSABLE
