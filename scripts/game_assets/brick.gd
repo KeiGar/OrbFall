@@ -23,3 +23,5 @@ func on_ball_hit() -> void:
 		collision_shape.disabled = true
 		await get_tree().create_timer(particle_lifetime).timeout
 		queue_free()	
+
+# TODO: imrpove usage of gpu particle systems in order to avoid stuttering during the beginning of the game
