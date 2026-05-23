@@ -26,9 +26,6 @@ func _ready() -> void:
 	game_over_screen.visible = false
 	startGameTimerRunning = true
 	game_start.emit()
-	
-	# TODO: pause scene without disabling whole scene, so that level scene nodes can be fully instantiated
-	# level_scenes.process_mode = Node.PROCESS_MODE_DISABLED
 
 	set_process_modes()
 	get_tree().paused = true
@@ -36,6 +33,8 @@ func _ready() -> void:
 	camera_original_pos = camera.position
 	show_mobile_overlay(is_mobile)
 	
+	# Game process
+
 func _process(delta: float) -> void:
 	readUserInput_GeneralControls()
 	if not (gameEnded or startGameTimerRunning):
@@ -45,6 +44,7 @@ func _process(delta: float) -> void:
 			if is_time_slowed_down:
 				camera.position = level_scenes.get_ball_position()
 		 
+
 func readUserInput_MenuControls() -> void:
 	if Input.is_action_just_pressed("pause_game"):
 		if isGamePaused:
@@ -61,40 +61,9 @@ func readUserInput_GameControls() -> void:
 		slowTime()
 	if Input.is_action_just_released("slow_down_time"):
 		revertTime()
-			
-func slowTime() -> void:
-	if not is_time_slowed_down:
-		Engine.set_time_scale(0.35)
-		camera.position = level_scenes.get_ball_position()
-		animation_player.play("camera_zoom_animation")
-		is_time_slowed_down = true
-		
-func revertTime() -> void:
-	if is_time_slowed_down:
-		Engine.set_time_scale(1.0)
-		camera.position = camera_original_pos
-		is_time_slowed_down = false
-		animation_player.play("camera_zoom_out")
-		
-			
-func unpauseGame() -> void:
-	isGamePaused = false
-	get_tree().paused = isGamePaused
-	show_mobile_overlay(is_mobile)
-	unpause.emit()
-	print("Game unpaused!")
-	
-func pauseGame() -> void:
-	revertTime()
-	isGamePaused = true
-	get_tree().paused = isGamePaused
-	show_mobile_overlay(false)
-	pause.emit()
-	print("Game paused!")
 
 	
-func quitGame() -> void:
-	get_tree().change_scene_to_file("res://scenes/menus/main_menu_controls.tscn")
+	# Signal handlers
 
 func _on_game_start_timer_timeout() -> void:
 	startGameTimerRunning = false
@@ -126,10 +95,8 @@ func _on_level_scenes_increment_points(incr: int) -> void:
 	player_score += incr
 	score_label.text = "%d" % player_score
 
-func _on_game_over_screen_btn_view_highscore_pressed() -> void:
-	PlayerVariables.player_score = player_score
-	get_tree().change_scene_to_file("res://scenes/menus/highscore_saving_screen.tscn")
-	
+	# Utils
+
 func show_mobile_overlay(make_visible: bool) -> void:
 	mobile_controls_overlay.visible = make_visible
 	hud_game_controls.visible = !make_visible
@@ -137,3 +104,44 @@ func show_mobile_overlay(make_visible: bool) -> void:
 func set_process_modes() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	level_scenes.process_mode = Node.PROCESS_MODE_PAUSABLE
+
+func slowTime() -> void:
+	if not is_time_slowed_down:
+		Engine.set_time_scale(0.35)
+		camera.position = level_scenes.get_ball_position()
+		animation_player.play("camera_zoom_animation")
+		is_time_slowed_down = true
+		
+func revertTime() -> void:
+	if is_time_slowed_down:
+		Engine.set_time_scale(1.0)
+		camera.position = camera_original_pos
+		is_time_slowed_down = false
+		animation_player.play("camera_zoom_out")
+		
+func unpauseGame() -> void:
+	isGamePaused = false
+	get_tree().paused = isGamePaused
+	show_mobile_overlay(is_mobile)
+	unpause.emit()
+	print("Game unpaused!")
+	
+func pauseGame() -> void:
+	revertTime()
+	isGamePaused = true
+	get_tree().paused = isGamePaused
+	show_mobile_overlay(false)
+	pause.emit()
+	print("Game paused!")
+
+
+	# Scene Transitions
+	
+func _on_game_over_screen_btn_view_highscore_pressed() -> void:
+	PlayerVariables.player_score = player_score
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/menus/highscore_saving_screen.tscn")
+
+func quitGame() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/menus/main_menu_controls.tscn")
