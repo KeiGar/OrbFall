@@ -3,21 +3,19 @@
 [ext_resource type="Script" uid="uid://d0d0gi2rp30cl" path="res://scripts/game_assets/ball.gd" id="1_7s4qf"]
 [ext_resource type="AudioStream" uid="uid://px4l2pwn0xv2" path="res://assets/sounds/8-bit-explosion-11-340459.mp3" id="2_u58ax"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yvfo8"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
-scale_min = 25.0
-scale_max = 25.0
-color = Color(0.8784314, 0.8784314, 0.8784314, 0.3372549)
-
 [node name="Ball" type="CharacterBody2D" unique_id=1933291483]
 motion_mode = 1
 script = ExtResource("1_7s4qf")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1223979791]
+[node name="GPUParticles2D" type="CPUParticles2D" parent="." unique_id=2130702639]
 amount = 3
 lifetime = 0.05
-process_material = SubResource("ParticleProcessMaterial_yvfo8")
+fixed_fps = 30
+draw_order = 1
+gravity = Vector2(0, 0)
+scale_amount_min = 25.0
+scale_amount_max = 25.0
+color = Color(0.8784314, 0.8784314, 0.8784314, 0.3372549)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=769085469]
 visible = false
