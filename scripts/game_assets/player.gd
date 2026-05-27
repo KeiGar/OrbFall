@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @onready var paddle_shape: Polygon2D = $PaddleShape
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
-@onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
+@onready var haze_particles: CPUParticles2D = $HazeParticles
 
 @export var paddle_width: float = 200
 @export var paddle_height: float = 50

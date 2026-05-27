@@ -11,8 +11,8 @@ func _process(delta: float) -> void:
 		timer_display.text = "START!" 
 
 func _on_game_start_timer_timeout() -> void:
-	print("Game unpaused!")
+	print("Game Timer Timeout!")
 
 func _on_game_game_start() -> void:
 	game_start_timer.start(GAME_START_COUNTDOWN)
-	print("Game start!")
+	print("Game Timer Start!")
