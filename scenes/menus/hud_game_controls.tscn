@@ -29,6 +29,7 @@ expand_margin_bottom = 2.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r5pdl"]
 
 [sub_resource type="Theme" id="Theme_p6vpu"]
+Button/font_sizes/font_size = 27
 Button/styles/normal = SubResource("StyleBoxFlat_2p3fb")
 Label/colors/font_color = Color(1, 1, 1, 0.69411767)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
@@ -38,7 +39,7 @@ Label/constants/outline_size = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
-Label/font_sizes/font_size = 20
+Label/font_sizes/font_size = 13
 Label/fonts/font = ExtResource("1_2p3fb")
 Label/styles/focus = SubResource("StyleBoxFlat_8im2c")
 Label/styles/normal = SubResource("StyleBoxEmpty_r5pdl")

@@ -17,22 +17,23 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="OrbFall"
 run/main_scene="uid://b3ceglkuwrcgy"
 config/features=PackedStringArray("4.6", "Forward Plus")
+run/max_fps=60
 config/icon="uid://dy5oeu5asr2l1"
+run/stretch/aspect="keep_width"
 
 [autoload]
 
+GameUtils="*uid://df1eojxu4nt1i"
 PlayerVariables="*res://scripts/globals/player_variables.gd"
 GlobalSettings="*uid://boovugufbvit3"
 HighscoreManagerAPI="*uid://2wnebqednw0h"
 
 [display]
 
-window/size/viewport_width=1125
+window/size/viewport_width=1100
 window/size/viewport_height=1000
 window/size/mode=3
-window/size/resizable=false
 window/stretch/mode="viewport"
-window/handheld/orientation=1
 
 [input]
 
@@ -68,3 +69,9 @@ toggle_hud={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194332,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+
