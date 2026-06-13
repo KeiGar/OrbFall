@@ -1,0 +1,40 @@
+name: Orbfall API Health Check
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  workflow_dispatch: 
+
+jobs:
+  check-health:
+    name: Ping Health Endpoint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Request and Validate
+        run: |
+          # 1. Use curl to save the body to a file, and capture the HTTP status code in a variable
+          HTTP_STATUS=$(curl -s -o response.txt -w "%{http_code}" https://api.keigartner.com/health)
+          
+          # 2. Read the response body into a variable
+          BODY=$(cat response.txt)
+          
+          # 3. Print the results for your GitHub Actions logs
+          echo "Status Code received: $HTTP_STATUS"
+          echo "Raw Body received: $BODY"
+          
+          # 4. Check if the status code is exactly 200
+          if [ "$HTTP_STATUS" -ne 200 ]; then
+            echo "❌ Error: API returned status code $HTTP_STATUS instead of 200."
+            exit 1
+          fi
+          
+          # 5. Check if the body matches your exact expected string
+          EXTRACTED_MESSAGE=$(echo "$BODY" | jq -r '.message')
+          echo "Extracted message: $EXTRACTED_MESSAGE"
+          if [ "$EXTRACTED_MESSAGE" != "Orbfall API ready!" ]; then
+            echo "❌ Error: API returned unexpected body: $BODY"
+            exit 1
+          fi
+          
+          echo "✅ Success! The Orbfall API is healthy and ready."
