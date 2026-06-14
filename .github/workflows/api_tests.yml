@@ -8,6 +8,9 @@ on:
 
 jobs:
   unit-tests:
+    name: Run Python Unit Tests
+    runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
