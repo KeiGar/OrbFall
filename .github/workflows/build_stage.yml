@@ -1,0 +1,31 @@
+name: Build & Stage
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-web:
+    name: Build Orbfall WebGL
+    runs-on: ubuntu-latest
+    container: barichello/godot-ci:4.6.2
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Create build directory
+        run: mkdir -v -p build/Web
+
+      - name: Export WebGL
+        run: |
+          echo "Starting Godot headless export for WebGL..."
+          godot --headless --export-release "Web" build/Web/orbfall_web.html
+
+      - name: Upload WebGL build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: orbfall-web-build
+          path: build/Web/
+          retention-days: 5
