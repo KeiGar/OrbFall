@@ -16,6 +16,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
+      - name: Setup Godot Export Templates
+        run: |
+          mkdir -v -p ~/.local/share/godot/export_templates
+          mv /root/.local/share/godot/export_templates/* ~/.local/share/godot/export_templates
+
       - name: Create build directory
         run: mkdir -v -p build/Web
 
