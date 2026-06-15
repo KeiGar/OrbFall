@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - 24-cicd-pipeline-integration
   workflow_dispatch:
 
 jobs:
