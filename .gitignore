@@ -2,6 +2,5 @@
 .godot/
 /android/
 /builds/
-export_presets.cfg
 /storage/
 __pycache__/
