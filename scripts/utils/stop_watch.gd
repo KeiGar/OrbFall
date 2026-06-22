@@ -3,10 +3,13 @@ extends BoxContainer
 
 var time_start:= Time.get_ticks_msec()
 var time_curr:= Time.get_ticks_msec() - time_start
+var time_elapsed:= 0.0
 
 func _process(delta: float) -> void:
 	time_curr = Time.get_ticks_msec() - time_start
-	lbl_time.text = _converTimeToStringFormatFromMsec(time_curr)
+	time_elapsed += delta
+	lbl_time.text = str(time_elapsed).pad_decimals(2)
+	# lbl_time.text = _converTimeToStringFormatFromMsec(time_curr)
 
 func _converTimeToStringFormatFromMsec(timeCurr: int) -> String: 
 	var seconds:= (int)(timeCurr / 1000.0)
