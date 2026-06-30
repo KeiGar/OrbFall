@@ -1,7 +1,5 @@
 extends Control
 @onready var highscore_table: GridContainer = $VBoxContainer/HighscoreTable
-const FILEPATH_HIGHSCORE_DATA = "user://highscores.json"
-var fileHandler = HighscoreManager.HighscoreFileHandler.new()
 var Highscores: Array[HighscoreManager.HighscoreData] = []
 
 func _ready() -> void:
