@@ -62,8 +62,8 @@ func _on_request_completed(result: int, response_code: int, _headers: PackedStri
 	# Logic to distinguish between the POST and GET responses
 	if json_data.has("leaderboard"):
 		# This is a GET response
-		emit_signal("leaderboard_received", json_data["leaderboard"])
 		_on_leaderboard_received(json_data["leaderboard"])
+		emit_signal("leaderboard_received", json_data["leaderboard"])
 		_print_scores(json_data["leaderboard"])
 		
 	elif json_data.has("message"):
