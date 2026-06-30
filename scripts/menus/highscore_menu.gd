@@ -6,6 +6,7 @@ var Highscores: Array[HighscoreManager.HighscoreData] = []
 
 func _ready() -> void:
 	Highscores = HighscoreManagerAPI.Highscores_Received
+	HighscoreManagerAPI.leaderboard_received.connect(_on_leaderboard_received)
 	display_highscores_data()
 	
 func display_highscores_data() -> void:
@@ -30,9 +31,7 @@ func clear_highscore_table() -> void:
 func _on_btn_return_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu_controls.tscn")
 	
-func _on_btn_delete_pressed() -> void:
-	fileHandler.deleteAllData()
-	Highscores = fileHandler.Highscores
+func _on_leaderboard_received(data: Array[HighscoreManager.HighscoreData]) -> void:
+	Highscores = HighscoreManagerAPI.Highscores_Received
 	clear_highscore_table()
 	display_highscores_data()
-	
