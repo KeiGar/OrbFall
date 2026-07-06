@@ -79,5 +79,5 @@ jobs:
           GH_TOKEN=${{ secrets.WEBSITE_DEPLOY_PAT }} gh pr create \
             --title "Staging Orbfall WebGL Build" \
             --body "Automated PR from Orbfall CI/CD pipeline. Run ID: ${{ github.run_id }}" \
-            --base main \
+            --base master \
             --head $BRANCH_NAME
