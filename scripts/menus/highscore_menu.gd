@@ -1,16 +1,13 @@
 extends Control
 @onready var highscore_table: GridContainer = $VBoxContainer/HighscoreTable
-const FILEPATH_HIGHSCORE_DATA = "user://highscores.json"
-var fileHandler = HighscoreManager.HighscoreFileHandler.new()
 var Highscores: Array[HighscoreManager.HighscoreData] = []
 
 func _ready() -> void:
-	# Highscores = fileHandler.Highscores
-	# Highscores.sort_custom(func(a: HighscoreManager.HighscoreData,b: HighscoreManager.HighscoreData): return a.Score > b.Score)
 	Highscores = HighscoreManagerAPI.Highscores_Received
-	displayHighscoreData()
+	HighscoreManagerAPI.leaderboard_received.connect(_on_leaderboard_received)
+	display_highscores_data()
 	
-func displayHighscoreData() -> void:
+func display_highscores_data() -> void:
 	var rank = 1
 	for score in Highscores:
 		var lbl_rank = Label.new()
@@ -24,7 +21,7 @@ func displayHighscoreData() -> void:
 		highscore_table.add_child(lbl_score)
 		rank += 1
 
-func clearHighscoreTable() -> void:
+func clear_highscore_table() -> void:
 	for n in highscore_table.get_children():
 		highscore_table.remove_child(n)
 		n.queue_free()
@@ -32,9 +29,7 @@ func clearHighscoreTable() -> void:
 func _on_btn_return_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu_controls.tscn")
 	
-func _on_btn_delete_pressed() -> void:
-	fileHandler.deleteAllData()
-	Highscores = fileHandler.Highscores
-	clearHighscoreTable()
-	displayHighscoreData()
-	
+func _on_leaderboard_received(data: Array[HighscoreManager.HighscoreData]) -> void:
+	Highscores = HighscoreManagerAPI.Highscores_Received
+	clear_highscore_table()
+	display_highscores_data()
