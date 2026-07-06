@@ -34,3 +34,50 @@ jobs:
           name: orbfall-web-build
           path: build/Web/
           retention-days: 5
+
+  deploy-to-homepage:
+    name: Deploy to keigartner.com Staging
+    needs: build-web
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download WebGL build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: orbfall-web-build
+          path: orbfall-web-build/
+
+      - name: Checkout Website Repository
+        uses: actions/checkout@v4
+        with:
+          repository: KeiGar/KeiGar.github.io
+          token: ${{ secrets.WEBSITE_DEPLOY_PAT }}
+          path: website-repo
+
+      - name: Stage Game Files
+        run: |
+          echo "Creating staging directory..."
+          mkdir -v -p website-repo/projects/builds/orbfall/
+
+          echo "Copying WebGL build files to staging directory..."
+          cp -v -r orbfall-web-build/* website-repo/projects/builds/orbfall/
+
+      - name: Create Pull Request for Staging
+        working-directory: website-repo
+        run: |
+          git config user.name "Orbfall CI Bot"
+          git config user.email "orbfall-ci-bot@keigartner.com"
+
+          BRANCH_NAME="staging-orbfall-${{ github.run_id }}"
+          git checkout -b $BRANCH_NAME
+
+          git add projects/builds/orbfall/
+          git commit -m "Staging Orbfall WebGL build from run ${{ github.run_id }}"
+          git push origin $BRANCH_NAME
+
+          echo "Creating pull request..."
+          GH_TOKEN=${{ secrets.WEBSITE_DEPLOY_PAT }} gh pr create \
+            --title "Staging Orbfall WebGL Build" \
+            --body "Automated PR from Orbfall CI/CD pipeline. Run ID: ${{ github.run_id }}" \
+            --base main \
+            --head $BRANCH_NAME
